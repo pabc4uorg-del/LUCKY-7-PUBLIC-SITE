@@ -1,0 +1,9 @@
+LUCKY 7 PUBLIC UI MASTER LOCK v3
+- Homepage = approved Lucky 7 app interface.
+- Never replace homepage with generic marketing UI.
+- Approved stadium/header remains authoritative.
+- Add Fixtures must visibly show MAXIMUM 300 FIXTURES PER RUN.
+- Loading screen appears only during analysis/connection progress.
+- Open Lucky 7 / Try Lucky 7 must open the interface, never Pricing.
+- No fabricated analytics if backend is unavailable.
+- Every visible control must have an action, route or clear unavailable-state message.

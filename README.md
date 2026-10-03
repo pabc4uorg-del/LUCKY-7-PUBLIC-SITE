@@ -1,21 +1,9 @@
-# Lucky 7 Public Website
+# Lucky 7 Public Site — UI Master Fix v3
 
-Public-facing website for **Lucky 7 Soccer Prediction**, created by **PABC — The Pan African Boys Club**.
-
-This repository is intentionally static for the first public website:
-- no payment secret keys
-- no database
-- no customer financial information
-- zero-cost GitHub Pages or Render Static Site deployment
-
-Pages included:
-- Home
-- Pricing
-- About
-- Privacy
-- Terms
-- Credit / Refund Policy
-- Contact
-
-Before public deployment, replace the contact email placeholder in `contact.html`.
-# LUCKY-7-PUBLIC-SITE
+- Homepage is the approved Lucky 7 app-style interface.
+- Loading artwork is only shown during analysis progress/connection checks.
+- Add Fixtures visibly shows `MAXIMUM 300 FIXTURES PER RUN`.
+- Open Lucky 7 routes to the interface, not Pricing.
+- GitHub Pages uses `main` / `/(root)`.
+- Cloud API URL goes only in `assets/config.js`.
+- Never commit secret API keys or Paystack secret keys here.

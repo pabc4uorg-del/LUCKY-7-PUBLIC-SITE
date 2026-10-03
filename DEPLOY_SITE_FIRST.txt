@@ -1,42 +1,8 @@
-LUCKY 7 - FASTEST ZERO-COST WEBSITE LAUNCH
-
-GOAL
-Get a real public HTTPS website address for Lucky 7 so it can be supplied to Paystack.
-
-BEFORE DEPLOYING
-Open contact.html in Notepad and replace:
-  ADD YOUR REAL SUPPORT EMAIL BEFORE PUBLIC DEPLOYMENT
-with a real support email address you control.
-
-OPTION A - GITHUB PAGES (GHS 0)
-1. Create or open your Lucky 7 GitHub repository.
-2. Put ALL files/folders from this ZIP in the repository root.
-3. Commit/push to the main branch.
-4. On GitHub open Settings -> Pages.
-5. Under Build and deployment, select GitHub Actions.
-6. The included .github/workflows/pages.yml publishes the site.
-7. When it finishes, GitHub shows the public HTTPS Pages address.
-8. Open the address on your phone and test all pages.
-9. Paste that exact HTTPS address into Paystack.
-
-OPTION B - RENDER STATIC SITE (GHS 0)
-1. Put these files in a GitHub repository.
-2. Sign in to Render.
-3. New -> Blueprint, or New -> Static Site.
-4. Connect the repository.
-5. The included render.yaml defines a free static site.
-6. Render will issue an HTTPS onrender.com address after deployment.
-7. Test it on your phone, then give the address to Paystack.
-
-WHY THE WEBSITE IS STATIC FIRST
-- GHS 0 hosting.
-- Fastest way to give Paystack a real business site.
-- No payment secrets are exposed.
-- The connected Lucky 7 analysis backend remains separate until cloud deployment is ready.
-
-NEXT AFTER WEBSITE
-1. Paystack test-mode integration.
-2. Put the FastAPI backend online.
-3. Connect website/app accounts to online backend.
-4. Package Capacitor Android APK.
-5. Sister handles Google Play setup.
+UPDATE EXISTING LIVE SITE
+1. Extract this ZIP.
+2. Copy its contents over the existing LUCKY-7-PUBLIC-SITE repository folder.
+3. In Git Bash inside that repository:
+   git add -A
+   git commit -m "Restore Lucky 7 master UI"
+   git push
+4. Keep GitHub Pages set to Deploy from a branch -> main -> /(root).

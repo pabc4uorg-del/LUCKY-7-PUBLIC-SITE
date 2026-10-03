@@ -3,139 +3,200 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Home | Lucky 7 Soccer Prediction</title>
+<meta name="theme-color" content="#00190f">
+<title>Lucky 7 Soccer Prediction</title>
 <meta name="description" content="Lucky 7 football analytics by PABC — The Pan African Boys Club.">
-<meta name="theme-color" content="#062e20">
-<link rel="icon" href="assets/lucky7-mark.svg">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="assets/brand/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/master-ui.css">
+<script defer src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="assets/config.js"></script>
 </head>
 <body>
+<div id="scrim" class="scrim"></div>
 
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="index.html"><img src="assets/lucky7-mark.svg" alt="">LUCKY 7</a>
-    <button class="menu" aria-label="Open menu">☰</button>
-    <nav class="navlinks">
-      <a href="index.html#how">How it works</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="about.html">About</a>
-      <a href="index.html#faq">FAQ</a>
-      <a class="cta" href="index.html#launch">Open Lucky 7</a>
-    </nav>
+<aside id="drawer" class="drawer" aria-hidden="true">
+  <div class="drawerTop">
+    <img src="assets/brand/app-icon-512.png" alt="Lucky 7">
+    <button id="closeDrawer" aria-label="Close menu">×</button>
   </div>
-</header>
-
-
-<main>
-<section class="hero">
- <div class="wrap heroGrid">
-  <div>
-   <div class="badge">📊 FOOTBALL ANALYTICS • NOT GAMBLING</div>
-   <h1>LUCKY <span>7</span></h1>
-   <p class="lead">Football fixture analysis built around recent performance, goals data, match context and transparent data-quality checks.</p>
-   <div class="heroActions">
-     <a class="button primary" href="#launch">TRY LUCKY 7</a>
-     <a class="button secondary" href="pricing.html">VIEW PRICING</a>
-   </div>
-   <div class="trustbar">
-    <div class="trust"><b>Same standard</b>Free & paid analysis</div>
-    <div class="trust"><b>No guarantees</b>Probabilities carry uncertainty</div>
-    <div class="trust"><b>Data quality</b>Weak evidence is flagged</div>
-    <div class="trust"><b>PABC</b>Visible creator brand</div>
-   </div>
+  <button data-go="home">🏠 Home</button>
+  <button id="drawerAdd">▤ Add Fixtures</button>
+  <button data-go="results">☷ Results</button>
+  <button data-go="account">👤 Account</button>
+  <a href="pricing.html">💳 Pricing</a>
+  <button data-go="reports">▥ Reports</button>
+  <button data-go="settings">⚙ Settings</button>
+  <button data-go="help">? Help</button>
+  <button data-go="about">ⓘ About</button>
+  <div class="drawerLegal">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="credit-policy.html">Credit Policy</a>
+    <a href="contact.html">Contact</a>
   </div>
-  <div class="heroVisual"><img src="assets/hero.jpg" alt="Lucky 7 Soccer Prediction"></div>
- </div>
-</section>
+</aside>
 
-<section id="how">
- <div class="wrap">
-  <div class="sectionTitle">
-   <h2>How Lucky 7 works</h2>
-   <p>Paste, upload or capture fixture information. Lucky 7 checks the fixture, gathers available football data and produces a quality-controlled analysis.</p>
+<div class="app">
+  <header class="hero">
+    <img class="heroImg" src="assets/approved_hero.jpg" alt="Lucky 7 Soccer Prediction">
+    <button id="menuBtn" class="heroTap menuTap" aria-label="Open menu"></button>
+    <button id="bellBtn" class="heroTap bellTap" aria-label="Notifications"></button>
+    <div id="accountPill" class="accountPill">SIGN IN</div>
+  </header>
+
+  <main>
+    <section id="home" class="page active">
+      <div class="fixture">
+        <div class="heading"><span class="num">1</span>ADD FIXTURES</div>
+        <div class="fixtureLimitBadge">MAXIMUM 300 FIXTURES PER RUN</div>
+        <textarea id="fixtures" maxlength="1048576" placeholder="Paste or type fixtures here...
+e.g. Team A vs Team B, League, Date, Time
+Kickoff eligibility is checked in Ghana time."></textarea>
+
+        <div class="intakeButtons">
+          <button id="pasteBtn" class="secondary" type="button">▤ Paste Text</button>
+          <button id="uploadBtn" class="secondary" type="button">⇧ Upload File</button>
+          <button id="screenshotBtn" class="secondary wideOnPhone" type="button">📷 Screenshot</button>
+        </div>
+
+        <input id="fixtureFile" type="file" hidden accept=".txt,.csv,text/plain,text/csv">
+        <input id="screenshotFile" type="file" hidden accept="image/png,image/jpeg,image/webp,image/*">
+
+        <div id="ocrBox" class="ocrBox hidden">
+          <div id="ocrStatus" class="status">Screenshot reader ready.</div>
+          <img id="ocrPreview" class="ocrPreview hidden" alt="Selected fixture screenshot">
+          <div class="ocrNote">Check the extracted text before running. Lucky 7 never runs automatically from OCR text.</div>
+        </div>
+
+        <div class="tierGrid">
+          <button id="freeTierBtn" class="tierCard selectedTier" type="button">
+            <b>FREE DAILY</b><small>1 Lucky 7 analysis per day</small>
+          </button>
+          <button id="fullTierBtn" class="tierCard" type="button">
+            <b>FULL ANALYSIS</b><small>Lucky 7 + Bonus + XXL where qualified</small>
+          </button>
+        </div>
+
+        <button id="runBtn" class="primary" type="button">🚀 RUN LUCKY 7</button>
+        <div id="runStatus" class="status">Public interface ready. Live analysis activates when the secure cloud backend is connected.</div>
+      </div>
+
+      <div class="visual"><img src="assets/approved_results.jpg" alt="Lucky 7, Bonus Set and XXL"></div>
+      <div class="visual"><img src="assets/approved_coverage.jpg" alt="Analysis Coverage"></div>
+    </section>
+
+    <section id="results" class="page">
+      <div class="panel">
+        <div class="heading"><span class="num">2</span>RESULTS</div>
+        <div id="resultsSummary" class="status">Run Lucky 7 to populate results after the cloud backend is connected.</div>
+        <div id="dynamicResults"></div>
+        <div class="visual compact"><img src="assets/approved_results.jpg" alt="Lucky 7 output format"></div>
+      </div>
+    </section>
+
+    <section id="account" class="page">
+      <div class="panel">
+        <div class="heading">👤 ACCOUNT</div>
+        <div id="signedOut">
+          <input id="displayName" placeholder="Name (optional)">
+          <input id="email" type="email" placeholder="Email">
+          <input id="password" type="password" placeholder="Password (8+ characters)">
+          <div class="row">
+            <button id="registerBtn" class="secondary" type="button">CREATE ACCOUNT</button>
+            <button id="loginBtn" class="primary smallPrimary" type="button">SIGN IN</button>
+          </div>
+        </div>
+        <div id="signedIn" class="hidden">
+          <div class="metric"><span>Signed in</span><b id="accountEmail">—</b></div>
+          <div class="metric"><span>Credit balance</span><b id="creditBalance">0</b></div>
+          <button id="logoutBtn" class="danger" type="button">SIGN OUT</button>
+        </div>
+        <div id="accountStatus" class="status"></div>
+      </div>
+    </section>
+
+    <section id="reports" class="page">
+      <div class="panel">
+        <div class="heading">▥ REPORTS</div>
+        <p>Reports will contain run history, data-quality information and validation information when the secure backend is online.</p>
+        <button id="pipelineBtn" class="secondary" type="button">SYSTEM STATUS</button>
+        <div id="pipelineStatus" class="status">Public frontend: online. Analytics backend: not yet connected.</div>
+      </div>
+    </section>
+
+    <section id="settings" class="page">
+      <div class="panel">
+        <div class="heading">⚙ SETTINGS</div>
+        <div class="metric"><span>Public UI</span><b>MASTER LOCK v3</b></div>
+        <div class="metric"><span>Fixture limit</span><b>300</b></div>
+        <div class="metric"><span>Timezone</span><b>Africa/Accra</b></div>
+        <div class="metric"><span>Product</span><b>Football analytics</b></div>
+        <div class="metric"><span>Backend</span><b id="backendState">NOT CONNECTED</b></div>
+        <a class="linkButton" href="pricing.html">VIEW PRICING</a>
+      </div>
+    </section>
+
+    <section id="help" class="page">
+      <div class="panel">
+        <div class="heading">? HELP</div>
+        <p>1. Add up to 300 fixtures. 2. Review imported or screenshot text. 3. Choose Free Daily or Full Analysis. 4. Press RUN LUCKY 7. 5. When the cloud backend is connected, progress appears on the master loading screen.</p>
+        <p class="status">The public website does not fabricate analysis while the backend is offline.</p>
+      </div>
+    </section>
+
+    <section id="about" class="page">
+      <div class="panel aboutHero">
+        <div class="analyticsBadge">📊 FOOTBALL ANALYTICS • NOT GAMBLING</div>
+        <div class="aboutMark">LUCKY 7</div>
+        <p class="aboutLead">Football goal analytics created by <b>PABC — The Pan African Boys Club</b>.</p>
+      </div>
+      <div class="panel">
+        <div class="heading">🛡 ANALYTICS-ONLY POLICY</div>
+        <div class="policyList">
+          <div>✓ No betting slips or staking instructions</div>
+          <div>✓ No bookmaker accounts</div>
+          <div>✓ No guaranteed-result claims</div>
+          <div>✓ Same analytical standard for free and paid access</div>
+          <div>✓ Poor-quality data can produce NO RESULT</div>
+        </div>
+      </div>
+      <div class="panel center">
+        <b class="tagline">GOALS • DATA • EDGE</b>
+        <p class="status">Created by PABC — The Pan African Boys Club</p>
+        <div class="legalLinks">
+          <a href="about.html">Full About</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom">
+    <button class="active" data-go="home"><b>⌂</b>Home</button>
+    <button data-go="results"><b>☷</b>Results</button>
+    <button data-go="reports"><b>▥</b>Reports</button>
+    <button data-go="settings"><b>⚙</b>Settings</button>
+  </nav>
+</div>
+
+<div id="analysisLoader" class="analysisLoader hidden" role="dialog" aria-modal="true" aria-live="polite">
+  <div class="loaderCard">
+    <img class="loaderBrand" src="assets/brand/loading-screen-reference.png" alt="Lucky 7 loading screen">
+    <div class="loaderTitle">LUCKY 7 ANALYSIS</div>
+    <div id="loaderStage" class="loaderStage">Reading fixtures</div>
+    <div class="progressTrack"><div id="loaderProgress" class="progressBar"></div></div>
+    <div class="progressStats">
+      <span id="loaderFixtures">Fixtures processed: 0 / 0</span>
+      <span id="loaderTeams">Teams checked: 0</span>
+      <span id="loaderSources">Sources responding: 0</span>
+      <span id="loaderElapsed">Elapsed: 0 sec</span>
+    </div>
+    <button id="cancelAnalysisBtn" class="dangerBtn" type="button">CANCEL ANALYSIS</button>
   </div>
-  <div class="cards">
-   <div class="card"><h3>1. Add fixtures</h3><p>Paste fixture text, upload a text/CSV file, or use screenshot text recognition in the connected Android experience.</p></div>
-   <div class="card"><h3>2. Check the data</h3><p>Recent results, goals for/against, home/away context and source quality are reconciled where public data is available.</p></div>
-   <div class="card"><h3>3. Review analysis</h3><p>The system returns football analytics with data-quality information and can return NO RESULT when the evidence is not good enough.</p></div>
-  </div>
- </div>
-</section>
+</div>
 
-<section>
- <div class="wrap policy">
-  <h2>Analytics-only policy</h2>
-  <p>Lucky 7 is a football analytics service. It does <b>not</b> provide betting accounts, bookmaker links, staking instructions, betting slips or guaranteed outcomes.</p>
-  <p>Our standard is the same for free and paid analysis. Paid use unlocks more product output — it does not receive “better” data or a different reliability standard.</p>
- </div>
-<div class="wrap"><p class="notice"><b>Fixture upload limit:</b> up to 300 raw fixtures per analysis run.</p></div></section>
-
-<section id="launch">
- <div class="wrap">
-  <div class="sectionTitle">
-   <h2>Launch offer</h2>
-   <p>Start free. Pay only when you want the complete product output.</p>
-  </div>
-  <div class="cards">
-   <div class="card">
-    <h3>FREE DAILY</h3><div class="price">GHS 0</div>
-    <div class="feature">1 Lucky 7 analysis per day</div>
-    <div class="feature">Same analytical standard</div>
-    <div class="feature">Same data-quality safeguards</div>
-    <div class="feature no">No Bonus Set</div>
-    <div class="feature no">No XXL</div>
-   </div>
-   <div class="card">
-    <h3>FULL ANALYSIS</h3><div class="price">GHS 2 <small>per successful full run</small></div>
-    <div class="feature">Complete Lucky 7 output</div>
-    <div class="feature">Bonus Set</div>
-    <div class="feature">XXL where qualified</div>
-    <div class="feature">Paid analysis is intended to be ad-free</div>
-   </div>
-   <div class="card">
-    <h3>10 CREDITS</h3><div class="price">GHS 10</div>
-    <div class="feature">10 successful Full Analysis runs</div>
-    <div class="feature">Credits remain if a run fails before completion</div>
-    <div class="feature">Account credit ledger</div>
-   </div>
-  </div>
-  <p class="notice" style="margin-top:15px">Public payments are not live on this website yet. Paystack and Google Play billing will be activated only after test-mode verification.</p>
- </div>
-</section>
-
-<section id="faq" class="faq">
- <div class="wrap">
-  <div class="sectionTitle"><h2>Frequently asked questions</h2></div>
-  <details><summary>Does Lucky 7 guarantee an outcome?</summary><p>No. Football is uncertain. Lucky 7 presents statistical analysis and data-quality information, not guarantees.</p></details>
-  <details><summary>Is the free analysis lower quality?</summary><p>No. Free and paid use the same analytical standards and safeguards. The difference is the amount of product output.</p></details>
-  <details><summary>When is a paid credit used?</summary><p>The product is designed to deduct a credit only after a successful paid analysis. Technical failures or rejected runs should not consume a credit.</p></details>
-  <details><summary>Who created Lucky 7?</summary><p>Lucky 7 is presented as a PABC — The Pan African Boys Club project.</p></details>
- </div>
-</section>
-</main>
-
-
-<footer>
- <div class="wrap footerGrid">
-   <div>
-     <h3>LUCKY 7 SOCCER PREDICTION</h3>
-     <p>Created by <b>PABC — The Pan African Boys Club</b>.</p>
-     <p class="small">Football analytics and statistical information. No bookmaker accounts, staking instructions, betting slips or guaranteed outcomes.</p>
-   </div>
-   <div>
-     <h3>Product</h3>
-     <a href="pricing.html">Pricing</a>
-     <a href="about.html">About</a>
-     <a href="contact.html">Contact</a>
-   </div>
-   <div>
-     <h3>Legal</h3>
-     <a href="privacy.html">Privacy</a>
-     <a href="terms.html">Terms</a>
-     <a href="credit-policy.html">Credit / Refund Policy</a>
-   </div>
- </div>
-</footer>
-
-<script src="assets/site.js"></script>
+<div id="toast" class="toast hidden" role="status"></div>
+<script src="assets/master-ui.js"></script>
 </body></html>
