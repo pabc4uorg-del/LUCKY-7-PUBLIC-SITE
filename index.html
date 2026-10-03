@@ -8,9 +8,9 @@
 <meta name="description" content="Lucky 7 football analytics by PABC — The Pan African Boys Club.">
 <link rel="icon" href="assets/brand/icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="assets/master-ui.css">
+<link rel="stylesheet" href="assets/master-ui.css?v=5.3">
 <script defer src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
-<script src="assets/config.js"></script>
+<script src="assets/config.js?v=5.3"></script>
 </head>
 <body>
 <div id="scrim" class="scrim"></div>
@@ -39,11 +39,18 @@
 
 <div class="app">
   <header class="hero">
-    <img class="heroImg" src="assets/approved_hero.jpg" alt="Lucky 7 Soccer Prediction">
+    <img class="heroImg" src="assets/hero-stadium-v53.jpg?v=5.3" alt="Lucky 7 Soccer Prediction stadium">
     <button id="menuBtn" class="heroTap menuTap" aria-label="Open menu"></button>
     <button id="bellBtn" class="heroTap bellTap" aria-label="Notifications"></button>
     <div id="accountPill" class="accountPill">SIGN IN</div>
   </header>
+
+  <section class="heroFeatures" aria-label="Lucky 7 analysis features">
+    <div class="heroFeature"><span class="featureIcon">▥</span><b>DATA DRIVEN</b><small>LAST 10 MATCHES</small></div>
+    <div class="heroFeature"><span class="featureIcon">◎</span><b>ACCURATE ANALYSIS</b><small>CALIBRATED PROBABILITIES</small></div>
+    <div class="heroFeature"><span class="featureIcon">◆</span><b>QUALITY FILTERS</b><small>RELIABLE FIXTURES</small></div>
+    <div class="heroFeature"><span class="featureIcon">★</span><b>3 RESULT SETS</b><small>LUCKY 7 • BONUS • XXL</small></div>
+  </section>
 
   <main>
     <section id="home" class="page active">
@@ -53,9 +60,10 @@
         <textarea id="fixtures" maxlength="1048576" placeholder="PASTE OR TYPE FIXTURES IN ANY TEXT LAYOUT...\n\nExamples can include team names, leagues, dates and times in ordinary text.\nYou can mix typed text, pasted text, uploaded text files and screenshot text in one fixture pool."></textarea>
 
         <div class="intakeButtons">
-          <button id="pasteBtn" class="secondary" type="button">▤ Paste Text</button>
+          <button id="pasteBtn" class="secondary" type="button">▤ PASTE TEXT</button>
           <button id="uploadBtn" class="secondary" type="button">⇧ UPLOAD TEXT FILES</button>
-          <button id="screenshotBtn" class="secondary wideOnPhone" type="button">📷 Screenshot</button>
+          <button id="screenshotBtn" class="secondary" type="button">▣ SCREENSHOT</button>
+          <button id="clearBtn" class="secondary clearButton" type="button">⌫ CLEAR ALL</button>
         </div>
 
         <input id="fixtureFile" type="file" hidden multiple accept="text/*,.txt,.csv,.tsv,.log,.md">
@@ -83,8 +91,14 @@
           </button>
         </div>
 
-        <button id="runBtn" class="primary" type="button">🚀 RUN LUCKY 7</button>
-        <div id="runStatus" class="status">Public interface ready. Live analysis activates when the secure cloud backend is connected.</div>
+      </div>
+
+      <div class="runPanel">
+        <div class="runStep"><span class="num">2</span></div>
+        <div class="runMain">
+          <button id="runBtn" class="primary runPrimary" type="button">▶ RUN LUCKY 7</button>
+          <div id="runStatus" class="status">PUBLIC INTERFACE READY • LIVE ANALYSIS ACTIVATES WHEN THE SECURE CLOUD BACKEND IS CONNECTED</div>
+        </div>
       </div>
 
       <div class="resultShell">
@@ -152,7 +166,7 @@
     <section id="settings" class="page">
       <div class="panel">
         <div class="heading">⚙ SETTINGS</div>
-        <div class="metric"><span>Public UI</span><b>MASTER LOCK V5 STADIUM</b></div>
+        <div class="metric"><span>Public UI</span><b>MASTER LOCK V5.3 VISUAL</b></div>
         <div class="metric"><span>Fixture limit</span><b>300</b></div>
         <div class="metric"><span>Timezone</span><b>Africa/Accra</b></div>
         <div class="metric"><span>Product</span><b>Football analytics</b></div>
@@ -222,5 +236,5 @@
 </div>
 
 <div id="toast" class="toast hidden" role="status"></div>
-<script src="assets/master-ui.js"></script>
+<script src="assets/master-ui.js?v=5.3"></script>
 </body></html>

@@ -1,7 +1,7 @@
 \
 :root{--gold:#ffd72f;--gold2:#e59d00;--goldhi:#fff19a;--green:#0a7a35;--green2:#045523;--deep:#00160c;--deep2:#002317;--ink:#020b06;--muted:#d8e2da;--line:#d4ad24}
 *{box-sizing:border-box}html,body{margin:0;background:#00140b;color:#fff;font-family:Arial,Helvetica,sans-serif}html{scroll-behavior:smooth}button,a,input,textarea{font:inherit}button{cursor:pointer}
-body{min-height:100vh;background:linear-gradient(rgba(0,20,10,.93),rgba(0,10,5,.97)),url('stadium-strip-v5.jpg') center top/cover fixed no-repeat}
+body{min-height:100vh;background:linear-gradient(rgba(0,20,10,.93),rgba(0,10,5,.97)),url('turf-master-v53.jpg') center top/cover fixed no-repeat}
 .app{width:min(100%,760px);margin:auto;min-height:100vh;background:linear-gradient(180deg,rgba(0,34,19,.97),rgba(0,14,8,.99));box-shadow:0 0 70px rgba(0,0,0,.8);position:relative;padding-bottom:74px;border-left:1px solid rgba(255,215,47,.22);border-right:1px solid rgba(255,215,47,.22)}
 .hero{position:relative;width:100%;overflow:hidden;border-bottom:1px solid var(--gold);background:#001b10;box-shadow:0 12px 28px rgba(0,0,0,.55)}.heroImg{display:block;width:100%;height:auto;filter:saturate(1.12) contrast(1.04)}.heroTap{position:absolute;top:0;height:33%;width:22%;border:0;background:transparent;z-index:5}.menuTap{left:0}.bellTap{right:0}.accountPill{position:absolute;right:11px;bottom:9px;background:linear-gradient(#0a6332,#02351c);border:1px solid var(--gold);border-radius:999px;padding:7px 11px;font-size:11px;font-weight:900;z-index:4;text-transform:uppercase;color:#fff}
 main{padding:14px 8px 18px}.page{display:none}.page.active{display:block}.fixture,.panel,.resultShell{border:1px solid rgba(255,215,47,.88);border-radius:18px;background:linear-gradient(150deg,rgba(1,39,22,.97),rgba(0,17,9,.98));padding:15px;margin-bottom:13px;box-shadow:0 12px 28px rgba(0,0,0,.38),inset 0 1px rgba(255,255,255,.03)}
@@ -45,4 +45,246 @@ textarea,input{width:100%;border:1px solid rgba(255,255,255,.37);border-radius:1
   margin-top:5px;
   color:#cfe6d7;
   overflow-wrap:anywhere;
+}
+
+
+/* =========================================================
+   V5.3 VISUAL MASTER FIX
+   APPROVED: SHARP STADIUM + TURF + BLACK/DEEP GREEN + GOLD
+   NO BLUE/PURPLE UI THEME. NO BLURRY CROWD TREATMENT.
+   ========================================================= */
+
+html{background:#001007}
+body{
+  background:
+    linear-gradient(rgba(0,20,10,.74),rgba(0,7,4,.93)),
+    url('turf-master-v53.jpg') center top/cover fixed repeat-y;
+}
+
+.app{
+  background:
+    linear-gradient(180deg,rgba(0,28,15,.90),rgba(0,9,5,.97));
+  border-left:1px solid rgba(255,215,47,.42);
+  border-right:1px solid rgba(255,215,47,.42);
+  box-shadow:0 0 90px rgba(0,0,0,.86);
+}
+
+.hero{
+  border-bottom:2px solid #ffd72f;
+  background:#001008;
+  box-shadow:0 12px 34px rgba(0,0,0,.72),0 0 24px rgba(22,152,64,.10);
+}
+.heroImg{
+  width:100%;
+  aspect-ratio:1536/581;
+  object-fit:cover;
+  object-position:center center;
+  filter:saturate(1.08) contrast(1.06);
+}
+
+.heroTap{
+  top:10px;
+  width:48px;
+  height:48px;
+  border:1px solid rgba(255,215,47,.90);
+  border-radius:14px;
+  background:linear-gradient(180deg,rgba(0,56,30,.94),rgba(0,20,11,.96));
+  box-shadow:0 6px 16px rgba(0,0,0,.38);
+}
+.menuTap{left:10px}
+.bellTap{right:10px}
+.menuTap::after{
+  content:"☰";
+  color:#ffd72f;
+  font-size:27px;
+  font-weight:1000;
+}
+.bellTap::after{
+  content:"♧";
+  color:#ffd72f;
+  font-size:25px;
+  font-weight:1000;
+}
+.accountPill{
+  right:12px;
+  bottom:10px;
+  color:#111100;
+  background:linear-gradient(#fff18a,#ffd52e 42%,#e8a400);
+  border:1px solid #fff4ad;
+  box-shadow:0 5px 14px rgba(0,0,0,.35);
+}
+
+.heroFeatures{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;
+  border-bottom:1px solid #c9a52b;
+  background:#001309;
+}
+.heroFeature{
+  min-height:92px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:10px 7px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(34,157,75,.24),transparent 75%),
+    linear-gradient(180deg,rgba(2,45,24,.98),rgba(0,17,9,.98));
+  border:1px solid rgba(255,215,47,.14);
+}
+.featureIcon{
+  width:37px;height:37px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  margin-bottom:6px;
+  border:2px solid #ffd72f;
+  color:#ffd72f;
+  background:#041b10;
+  font-size:20px;
+  font-weight:1000;
+  box-shadow:0 0 18px rgba(255,209,30,.16);
+}
+.heroFeature b{
+  color:#fff;
+  font-size:11px;
+  letter-spacing:.2px;
+}
+.heroFeature small{
+  color:#ffe88a;
+  font-size:9px;
+  margin-top:3px;
+  line-height:1.25;
+}
+
+main{
+  padding:14px 9px 22px;
+  background:
+    linear-gradient(rgba(0,23,12,.58),rgba(0,12,7,.76)),
+    url('turf-master-v53.jpg') center top/cover repeat-y;
+}
+
+.fixture,.panel,.resultShell,.runPanel{
+  border:1px solid rgba(255,215,47,.95);
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(31,128,62,.18),transparent 22rem),
+    linear-gradient(155deg,rgba(2,42,23,.97),rgba(0,12,7,.99));
+  box-shadow:
+    0 14px 30px rgba(0,0,0,.46),
+    inset 0 1px rgba(255,255,255,.03),
+    inset 0 0 0 1px rgba(255,215,47,.06);
+}
+
+.heading{
+  color:#ffd72f;
+  font-size:26px;
+  text-shadow:0 1px #5d4300,0 0 14px rgba(255,215,47,.08);
+}
+.num{
+  background:linear-gradient(#fff49c,#ffd62e 46%,#e9a000);
+  border-color:#fff2a6;
+  box-shadow:0 0 20px rgba(255,205,0,.25);
+}
+
+.fixtureLimitBadge{
+  background:linear-gradient(#0d6e39,#04451f);
+  border-color:#ffd72f;
+  color:#fff2aa;
+}
+
+textarea,input{
+  background:linear-gradient(180deg,#182823,#0b1713);
+  border:1px solid rgba(255,255,255,.35);
+  color:#fff;
+  box-shadow:inset 0 2px 10px rgba(0,0,0,.42);
+}
+textarea:focus,input:focus{
+  border-color:#ffd72f;
+  box-shadow:0 0 0 2px rgba(255,215,47,.10),inset 0 2px 10px rgba(0,0,0,.42);
+}
+
+.intakeButtons{
+  grid-template-columns:repeat(2,1fr);
+}
+.secondary{
+  border:1px solid #ffd72f;
+  background:linear-gradient(180deg,#0b7036,#03401f);
+  color:#fff;
+  box-shadow:0 6px 15px rgba(0,0,0,.33),inset 0 1px rgba(255,255,255,.08);
+}
+.secondary:hover{filter:brightness(1.08)}
+.clearButton{
+  background:linear-gradient(180deg,#4d3500,#281d00);
+  color:#ffe88b;
+}
+
+.uploadStatus{
+  border-color:rgba(255,215,47,.72);
+  background:linear-gradient(180deg,#073d24,#02180e);
+}
+
+.runPanel{
+  display:grid;
+  grid-template-columns:58px 1fr;
+  gap:10px;
+  align-items:center;
+  padding:12px;
+  margin-bottom:13px;
+}
+.runStep{display:flex;align-items:center;justify-content:center}
+.runMain{min-width:0}
+.runPrimary{
+  margin:0;
+  min-height:62px;
+  border-radius:16px;
+  background:linear-gradient(#fff39a 0%,#ffd72f 40%,#eba500 100%);
+  color:#101000;
+  font-size:24px;
+  letter-spacing:.3px;
+  box-shadow:0 8px 20px rgba(0,0,0,.40),inset 0 2px #fff7c6;
+}
+.runPanel .status{
+  text-align:center;
+  color:#ffe999;
+  font-weight:800;
+  margin-top:7px;
+}
+
+.resultCard{
+  position:relative;
+  overflow:hidden;
+  border:1px solid #ffd72f;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(21,130,61,.28),transparent 65%),
+    linear-gradient(160deg,#07351f,#01170d 76%);
+}
+.resultCard::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  box-shadow:inset 0 0 26px rgba(36,199,83,.08);
+}
+.resultCard h3{color:#ffe45c}
+.resultCard .big{color:#fff6b7}
+
+.coverageItem{
+  background:linear-gradient(180deg,#07331f,#02190f);
+  border-color:#7b6b22;
+}
+.coverageItem b{color:#ffd72f}
+
+.bottom{
+  background:linear-gradient(#001d10,#000b05);
+  border-top:1px solid #ffd72f;
+}
+.bottom button.active,.bottom button.active b{color:#ffd72f}
+
+@media(min-width:680px){
+  .heroFeatures{grid-template-columns:repeat(4,1fr)}
+  .intakeButtons{grid-template-columns:repeat(4,1fr)}
 }

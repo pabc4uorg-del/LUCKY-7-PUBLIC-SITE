@@ -123,6 +123,25 @@ async function loadTextFiles(fileList){
   if(input)input.value="";
 }
 
+
+function clearAllFixtureInput(){
+  const box=$("fixtures");
+  if(box)box.value="";
+  uploadedFixtureFiles=[];
+  const fileInput=$("fixtureFile");
+  const shotInput=$("screenshotFile");
+  if(fileInput)fileInput.value="";
+  if(shotInput)shotInput.value="";
+  const ocr=$("ocrBox");
+  const preview=$("ocrPreview");
+  const ocrStatus=$("ocrStatus");
+  if(ocr)ocr.classList.add("hidden");
+  if(preview){preview.classList.add("hidden");preview.removeAttribute("src")}
+  if(ocrStatus)ocrStatus.textContent="Screenshot reader ready.";
+  updateUploadStatus();
+  toast("Fixture input cleared.");
+}
+
 async function readScreenshot(f){
   if(!f)return;
   if(f.size>8388608){toast("Maximum screenshot size is 8 MB.");return}
@@ -169,5 +188,6 @@ function setOfflineAccountState(){
   if($("accountStatus"))$("accountStatus").textContent="REAL SIGN-IN WILL ACTIVATE AFTER THE SECURE FASTAPI BACKEND IS DEPLOYED.";
   if($("accountPill"))$("accountPill").textContent="ACCOUNT";
 }
-function bind(){$("menuBtn").onclick=openDrawer;$("closeDrawer").onclick=closeDrawer;$("scrim").onclick=closeDrawer;$("bellBtn").onclick=()=>toast("No new notifications.");$("accountPill").onclick=()=>setPage("account");document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>setPage(b.dataset.go));$("drawerAdd").onclick=()=>{setPage("home");setTimeout(()=>$("fixtures").focus(),250)};$("pasteBtn").onclick=pasteText;$("uploadBtn").onclick=()=>$("fixtureFile").click();$("screenshotBtn").onclick=()=>$("screenshotFile").click();$("fixtureFile").onchange=e=>loadTextFiles(e.target.files);$("screenshotFile").onchange=e=>readScreenshot(e.target.files[0]);$("freeTierBtn").onclick=()=>chooseTier("FREE");$("fullTierBtn").onclick=()=>chooseTier("FULL");$("runBtn").onclick=runAnalysis;$("cancelAnalysisBtn").onclick=cancelRun;$("registerBtn").onclick=register;$("loginBtn").onclick=login;$("logoutBtn").onclick=logout;$("pipelineBtn").onclick=()=>{$("pipelineStatus").textContent=API_BASE?"Cloud backend configured. Full diagnostics remain private/admin-only.":"Public frontend: online. Analytics backend: not yet connected."};$("backendState").textContent=API_BASE?"CONNECTED":"NOT CONNECTED";if(API_BASE)$("runStatus").textContent="Backend configured. Sign in before running analysis.";refreshAccount();setOfflineAccountState();updateUploadStatus()}
+function bind(){$("menuBtn").onclick=openDrawer;$("closeDrawer").onclick=closeDrawer;$("scrim").onclick=closeDrawer;$("bellBtn").onclick=()=>toast("No new notifications.");$("accountPill").onclick=()=>setPage("account");document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>setPage(b.dataset.go));$("drawerAdd").onclick=()=>{setPage("home");setTimeout(()=>$("fixtures").focus(),250)};$("pasteBtn").onclick=pasteText;$("uploadBtn").onclick=()=>$("fixtureFile").click();$("screenshotBtn").onclick=()=>$("screenshotFile").click();
+$("clearBtn").onclick=clearAllFixtureInput;$("fixtureFile").onchange=e=>loadTextFiles(e.target.files);$("screenshotFile").onchange=e=>readScreenshot(e.target.files[0]);$("freeTierBtn").onclick=()=>chooseTier("FREE");$("fullTierBtn").onclick=()=>chooseTier("FULL");$("runBtn").onclick=runAnalysis;$("cancelAnalysisBtn").onclick=cancelRun;$("registerBtn").onclick=register;$("loginBtn").onclick=login;$("logoutBtn").onclick=logout;$("pipelineBtn").onclick=()=>{$("pipelineStatus").textContent=API_BASE?"Cloud backend configured. Full diagnostics remain private/admin-only.":"Public frontend: online. Analytics backend: not yet connected."};$("backendState").textContent=API_BASE?"CONNECTED":"NOT CONNECTED";if(API_BASE)$("runStatus").textContent="Backend configured. Sign in before running analysis.";refreshAccount();setOfflineAccountState();updateUploadStatus()}
 document.addEventListener("DOMContentLoaded",()=>{bind();const target=(location.hash||'').replace('#','');if(['home','results','account','reports','settings','help','about'].includes(target))setPage(target);});

@@ -1,6 +1,6 @@
 \
 :root{--gold:#ffd72f;--gold2:#e59d00;--bg:#00140b;--panel:#002216;--line:#c9a52b;--text:#fff;--muted:#d4dfd7}
-*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}body{background:linear-gradient(rgba(0,18,9,.88),rgba(0,9,5,.96)),url('stadium-strip-v5.jpg') center top/cover fixed no-repeat}a{color:inherit}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}body{background:linear-gradient(rgba(0,18,9,.88),rgba(0,9,5,.96)),url('turf-master-v53.jpg') center top/cover fixed no-repeat}a{color:inherit}
 header{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,rgba(0,34,19,.98),rgba(0,15,8,.98));border-bottom:1px solid var(--gold);box-shadow:0 8px 24px rgba(0,0,0,.36)}.wrap{width:min(1120px,92%);margin:auto}.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:1000;color:var(--gold);font-size:20px;text-transform:uppercase}.brand img{width:44px;height:44px;border-radius:10px}.navlinks{display:flex;gap:18px;align-items:center}.navlinks a{text-decoration:none;text-transform:uppercase;font-weight:800;font-size:13px}.cta,.button{background:linear-gradient(#fff18a,#ffd52e 40%,#e6a000);color:#101000!important;border:1px solid #fff0a2;border-radius:999px;padding:11px 19px;font-weight:1000;text-decoration:none;text-transform:uppercase}.menu{display:none;background:none;border:0;color:#fff;font-size:24px}
 main{min-height:70vh}.heroSmall{padding:70px 0 34px;text-align:center;background:linear-gradient(rgba(0,38,20,.26),rgba(0,18,9,.7));border-bottom:1px solid rgba(255,215,47,.25)}.heroSmall h1{font-size:clamp(38px,7vw,68px);color:var(--gold);margin:0 0 10px;text-transform:uppercase;text-shadow:0 2px #6b4f00}.heroSmall p{color:#fff;font-size:18px;font-weight:700}.section{padding:28px 0 60px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:linear-gradient(155deg,rgba(5,66,34,.96),rgba(0,22,12,.98));border:1px solid var(--gold);border-radius:18px;padding:21px;box-shadow:0 12px 26px rgba(0,0,0,.35),inset 0 1px rgba(255,255,255,.04)}.card h3{color:var(--gold);margin-top:0;text-transform:uppercase;font-size:20px}.price{font-size:36px;color:#fff0a2;font-weight:1000;margin:12px 0}.feature{padding:10px 0;border-bottom:1px solid #24563b}.feature:before{content:'✓ ';color:var(--gold);font-weight:900}.feature.no:before{content:'— ';color:#b7c1ba}.notice{border:1px solid var(--gold);background:#2c2302;padding:13px;border-radius:10px;color:#fff0ae;line-height:1.5;font-weight:700}.content{background:linear-gradient(155deg,rgba(5,57,31,.96),rgba(0,22,12,.98));border:1px solid var(--gold);border-radius:18px;padding:23px;line-height:1.68;box-shadow:0 10px 26px rgba(0,0,0,.34)}.content h2,.content h3{color:var(--gold);text-transform:uppercase}.priceHero{margin-bottom:18px;border:1px solid var(--gold);border-radius:18px;overflow:hidden;background:#00170d}.priceHero img{display:block;width:100%;height:auto;max-height:330px;object-fit:cover;object-position:center 64%}
 footer{border-top:1px solid var(--gold);padding:32px 0 50px;color:#d7e2db;background:rgba(0,15,8,.92)}.footerGrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:25px}.footerGrid h3{text-transform:uppercase;color:var(--gold)}.footerGrid a{display:block;margin:8px 0;text-decoration:none;text-transform:uppercase;font-size:12px}.small{font-size:12px;color:#aebdb3}
@@ -26,4 +26,36 @@ footer{border-top:1px solid var(--gold);padding:32px 0 50px;color:#d7e2db;backgr
   margin:8px 0;
   line-height:1.6;
   color:#f4f7f5;
+}
+
+
+/* V5.3 PUBLIC PAGE VISUAL MASTER */
+body{
+  background:
+    linear-gradient(rgba(0,18,9,.76),rgba(0,8,4,.94)),
+    url('turf-master-v53.jpg') center top/cover fixed repeat-y;
+}
+header{
+  background:linear-gradient(180deg,rgba(0,34,18,.99),rgba(0,10,5,.99));
+  border-bottom:1px solid #ffd72f;
+}
+.heroSmall{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(36,145,70,.25),transparent 50%),
+    linear-gradient(rgba(0,33,17,.70),rgba(0,14,8,.86));
+}
+.card,.content,.africaFx{
+  background:
+    radial-gradient(circle at 15% 0%,rgba(24,121,59,.20),transparent 20rem),
+    linear-gradient(155deg,rgba(4,57,30,.97),rgba(0,17,9,.99));
+  border-color:#ffd72f;
+}
+.priceHero{
+  border:1px solid #ffd72f;
+  box-shadow:0 16px 34px rgba(0,0,0,.46);
+}
+.priceHero img{
+  max-height:430px;
+  object-fit:cover;
+  object-position:center;
 }

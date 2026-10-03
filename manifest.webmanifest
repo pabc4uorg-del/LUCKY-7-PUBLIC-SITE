@@ -3,7 +3,7 @@
   "short_name": "Lucky 7",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#00150d",
+  "background_color": "#001007",
   "theme_color": "#00190f",
   "icons": [
     {
