@@ -1,7 +1,7 @@
 \
 :root{--gold:#ffd72f;--gold2:#e59d00;--goldhi:#fff19a;--green:#0a7a35;--green2:#045523;--deep:#00160c;--deep2:#002317;--ink:#020b06;--muted:#d8e2da;--line:#d4ad24}
 *{box-sizing:border-box}html,body{margin:0;background:#00140b;color:#fff;font-family:Arial,Helvetica,sans-serif}html{scroll-behavior:smooth}button,a,input,textarea{font:inherit}button{cursor:pointer}
-body{min-height:100vh;background:linear-gradient(rgba(0,20,10,.93),rgba(0,10,5,.97)),url('turf-master-v53.jpg') center top/cover fixed no-repeat}
+body{min-height:100vh;background:linear-gradient(rgba(0,20,10,.93),rgba(0,10,5,.97)),url('turf-master-v55.jpg') center top/cover fixed no-repeat}
 .app{width:min(100%,760px);margin:auto;min-height:100vh;background:linear-gradient(180deg,rgba(0,34,19,.97),rgba(0,14,8,.99));box-shadow:0 0 70px rgba(0,0,0,.8);position:relative;padding-bottom:74px;border-left:1px solid rgba(255,215,47,.22);border-right:1px solid rgba(255,215,47,.22)}
 .hero{position:relative;width:100%;overflow:hidden;border-bottom:1px solid var(--gold);background:#001b10;box-shadow:0 12px 28px rgba(0,0,0,.55)}.heroImg{display:block;width:100%;height:auto;filter:saturate(1.12) contrast(1.04)}.heroTap{position:absolute;top:0;height:33%;width:22%;border:0;background:transparent;z-index:5}.menuTap{left:0}.bellTap{right:0}.accountPill{position:absolute;right:11px;bottom:9px;background:linear-gradient(#0a6332,#02351c);border:1px solid var(--gold);border-radius:999px;padding:7px 11px;font-size:11px;font-weight:900;z-index:4;text-transform:uppercase;color:#fff}
 main{padding:14px 8px 18px}.page{display:none}.page.active{display:block}.fixture,.panel,.resultShell{border:1px solid rgba(255,215,47,.88);border-radius:18px;background:linear-gradient(150deg,rgba(1,39,22,.97),rgba(0,17,9,.98));padding:15px;margin-bottom:13px;box-shadow:0 12px 28px rgba(0,0,0,.38),inset 0 1px rgba(255,255,255,.03)}
@@ -51,14 +51,14 @@ textarea,input{width:100%;border:1px solid rgba(255,255,255,.37);border-radius:1
 /* =========================================================
    V5.3 VISUAL MASTER FIX
    APPROVED: SHARP STADIUM + TURF + BLACK/DEEP GREEN + GOLD
-   NO BLUE/PURPLE UI THEME. NO BLURRY CROWD TREATMENT.
+   BLUE BONUS + PURPLE XXL ACCENTS ARE PART OF THE APPROVED MASTER. NO BLURRY CROWD TREATMENT.
    ========================================================= */
 
 html{background:#001007}
 body{
   background:
     linear-gradient(rgba(0,20,10,.74),rgba(0,7,4,.93)),
-    url('turf-master-v53.jpg') center top/cover fixed repeat-y;
+    url('turf-master-v55.jpg') center top/cover fixed repeat-y;
 }
 
 .app{
@@ -163,7 +163,7 @@ main{
   padding:14px 9px 22px;
   background:
     linear-gradient(rgba(0,23,12,.58),rgba(0,12,7,.76)),
-    url('turf-master-v53.jpg') center top/cover repeat-y;
+    url('turf-master-v55.jpg') center top/cover repeat-y;
 }
 
 .fixture,.panel,.resultShell,.runPanel{
@@ -287,4 +287,326 @@ textarea:focus,input:focus{
 @media(min-width:680px){
   .heroFeatures{grid-template-columns:repeat(4,1fr)}
   .intakeButtons{grid-template-columns:repeat(4,1fr)}
+}
+
+
+/* ============================================================
+   V5.4 FULL VISUAL ROLLOUT
+   APPROVED DIRECTION: SHARP STADIUM / TURF / BLACK / EMERALD / GOLD
+   APPROVED BLUE BONUS + PURPLE XXL ACCENTS
+   ============================================================ */
+
+:root{
+  --v54-gold:#ffd936;
+  --v54-gold2:#e9a900;
+  --v54-emerald:#00a84f;
+  --v54-emerald2:#056332;
+  --v54-deep:#00170c;
+  --v54-panel:#021e12;
+  --v54-line:rgba(255,217,54,.92);
+  --v54-white:#fffdf0;
+}
+
+/* HERO HEIGHT: intentionally taller on mobile/tablet */
+.hero{
+  min-height:420px;
+  display:flex;
+  align-items:stretch;
+  border-radius:0 0 22px 22px;
+}
+.heroImg{
+  width:100%;
+  height:440px;
+  object-fit:cover;
+  object-position:center center;
+  filter:saturate(1.12) contrast(1.08) brightness(1.02);
+}
+@media(max-width:1100px){
+  .hero{min-height:clamp(330px,52vw,500px)}
+  .heroImg{
+    height:clamp(330px,52vw,500px);
+    object-fit:cover;
+    object-position:50% 48%;
+  }
+}
+@media(max-width:540px){
+  .hero{min-height:355px}
+  .heroImg{
+    height:355px;
+    object-fit:cover;
+    object-position:50% 50%;
+  }
+  .heroTap{top:12px;width:52px;height:52px}
+  .menuTap{left:12px}
+  .bellTap{right:12px}
+  .accountPill{bottom:13px;right:13px;padding:8px 13px}
+}
+
+/* Make the approved turf part of the whole app, not just the page edges */
+.app{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(0,155,67,.13),transparent 24rem),
+    linear-gradient(rgba(0,28,14,.74),rgba(0,8,4,.90)),
+    url('turf-master-v55.jpg') center top/cover fixed repeat-y;
+}
+main{
+  position:relative;
+  isolation:isolate;
+  background:
+    linear-gradient(rgba(0,31,15,.62),rgba(0,10,5,.78)),
+    url('turf-master-v55.jpg') center top/cover repeat-y;
+}
+main::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 10% 20%,rgba(12,194,73,.10),transparent 18rem),
+    radial-gradient(circle at 90% 52%,rgba(255,212,33,.07),transparent 22rem);
+}
+
+/* Feature row now matches the approved high-energy style */
+.heroFeatures{
+  gap:8px;
+  padding:10px;
+  background:
+    linear-gradient(180deg,rgba(0,32,17,.96),rgba(0,13,7,.98)),
+    url('turf-master-v55.jpg') center/cover;
+}
+.heroFeature{
+  min-height:104px;
+  border:1px solid rgba(255,217,54,.75);
+  border-radius:16px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(26,157,69,.32),transparent 70%),
+    linear-gradient(160deg,rgba(4,61,31,.98),rgba(0,18,9,.99));
+  box-shadow:0 8px 18px rgba(0,0,0,.34),inset 0 0 24px rgba(0,164,72,.05);
+}
+.featureIcon{
+  width:42px;height:42px;
+  border:2px solid var(--v54-gold);
+  background:linear-gradient(#06351c,#01170c);
+  box-shadow:0 0 20px rgba(255,211,29,.22);
+}
+
+/* All primary panels */
+.fixture,.panel,.resultShell,.runPanel{
+  border:1.5px solid var(--v54-gold);
+  background:
+    radial-gradient(circle at 10% 0%,rgba(8,117,54,.18),transparent 20rem),
+    linear-gradient(155deg,rgba(2,44,23,.98),rgba(0,13,7,.99));
+  box-shadow:
+    0 14px 32px rgba(0,0,0,.50),
+    inset 0 0 0 1px rgba(255,234,129,.05),
+    0 0 18px rgba(7,121,50,.05);
+}
+.fixture,.resultShell{padding:15px}
+.heading{
+  font-size:clamp(25px,5vw,34px);
+  color:var(--v54-gold);
+  letter-spacing:.4px;
+  text-shadow:0 2px #654900,0 0 10px rgba(255,217,54,.10);
+}
+.num{
+  min-width:45px;
+  min-height:45px;
+  display:grid;
+  place-items:center;
+  border:2px solid #fff0a0;
+  background:linear-gradient(#fff7b2,#ffd936 44%,#e9a000);
+  color:#0c1409;
+  box-shadow:0 0 18px rgba(255,205,0,.26);
+}
+
+/* Input area: darker graphite-like box from approved design */
+textarea{
+  min-height:190px;
+  border:1px solid rgba(255,255,255,.48);
+  border-radius:14px;
+  background:linear-gradient(180deg,#16251f,#0b1511);
+  color:#fff;
+  font-size:15px;
+}
+textarea::placeholder{color:#d4ded8}
+textarea:focus{
+  border-color:var(--v54-gold);
+  box-shadow:0 0 0 3px rgba(255,217,54,.10),inset 0 2px 12px rgba(0,0,0,.44);
+}
+
+/* Action buttons */
+.secondary{
+  min-height:48px;
+  border:1px solid var(--v54-gold);
+  border-radius:12px;
+  background:
+    linear-gradient(180deg,#0e7b3e,#075128 50%,#03371d);
+  color:#fffdf0;
+  font-weight:1000;
+  box-shadow:0 8px 16px rgba(0,0,0,.32),inset 0 1px rgba(255,255,255,.12);
+}
+.clearButton{
+  background:linear-gradient(180deg,#5b4104,#322300);
+  color:#ffe98b;
+}
+.runPanel{
+  grid-template-columns:56px 1fr;
+  padding:14px;
+}
+.runPrimary{
+  min-height:70px;
+  border:1px solid #fff3a8;
+  background:linear-gradient(#fff8b2 0%,#ffde42 42%,#e8a400 100%);
+  color:#101100;
+  font-size:clamp(22px,5vw,31px);
+  text-shadow:0 1px rgba(255,255,255,.42);
+  box-shadow:0 10px 24px rgba(0,0,0,.42),inset 0 2px #fff8ce;
+}
+
+/* RESULTS: all green/gold, no blue or purple */
+.resultGrid{gap:12px}
+.resultCard{
+  min-height:210px;
+  border:1.5px solid var(--v54-gold);
+  background:
+    radial-gradient(circle at 50% -10%,rgba(24,181,77,.25),transparent 60%),
+    linear-gradient(160deg,#06391f,#01180d 75%);
+  box-shadow:0 10px 24px rgba(0,0,0,.38),inset 0 0 24px rgba(10,198,74,.05);
+}
+.resultCard:nth-child(2){
+  background:
+    radial-gradient(circle at 50% -10%,rgba(87,176,53,.18),transparent 62%),
+    linear-gradient(160deg,#10361c,#071a0d 75%);
+}
+.resultCard:nth-child(3){
+  background:
+    radial-gradient(circle at 50% -10%,rgba(214,170,18,.14),transparent 62%),
+    linear-gradient(160deg,#2d2a0a,#111305 76%);
+}
+.resultCard h3{
+  color:#fff4a5;
+  font-size:24px;
+}
+.resultCard .big{color:#ffd936}
+
+/* Analysis coverage tiles */
+.coverageGrid{gap:9px}
+.coverageItem{
+  border:1px solid rgba(255,217,54,.60);
+  border-radius:14px;
+  background:
+    radial-gradient(circle at 20% 0%,rgba(23,136,61,.18),transparent 70%),
+    linear-gradient(180deg,#07341f,#02180e);
+  box-shadow:0 7px 16px rgba(0,0,0,.28);
+}
+.coverageItem b{color:#ffd936}
+
+/* Drawer / account / auxiliary panels */
+.drawer,.modalCard,.accountCard,.settingsCard{
+  background:
+    radial-gradient(circle at 30% 0%,rgba(13,119,53,.18),transparent 18rem),
+    linear-gradient(160deg,#052d1b,#00150b);
+  border-color:var(--v54-gold);
+}
+
+/* Mobile spacing so the page feels designed rather than compressed */
+@media(max-width:620px){
+  main{padding:14px 8px 96px}
+  .fixture,.resultShell,.runPanel{border-radius:17px}
+  .heroFeatures{grid-template-columns:repeat(2,1fr)}
+  .intakeButtons{grid-template-columns:1fr 1fr}
+  .runPanel{grid-template-columns:48px 1fr}
+  .runPrimary{min-height:68px}
+  .resultGrid{grid-template-columns:1fr}
+}
+
+
+/* ============================================================
+   V5.5 SCREENSHOT STYLE MASTER
+   AUTHORITATIVE VISUAL REFERENCE:
+   assets/VISUAL_MASTER_REFERENCE_V5_5.png
+
+   CORE PALETTE: STADIUM / TURF / BLACK / DEEP GREEN / METALLIC GOLD
+   PURPOSEFUL ACCENTS:
+   - LUCKY 7 = GREEN + GOLD
+   - BONUS SET = ELECTRIC / DEEP BLUE
+   - XXL = PURPLE / MAGENTA
+   ============================================================ */
+
+:root{
+  --l7-gold:#ffd936;
+  --l7-green:#00b64f;
+  --l7-blue:#159cff;
+  --l7-blue-deep:#063b80;
+  --l7-purple:#ce39ff;
+  --l7-purple-deep:#5b0876;
+}
+
+/* Preserve the approved tall sharp stadium hero. */
+.heroImg{
+  content:url('hero-stadium-v55.jpg');
+}
+.app,main,body{
+  background-image:
+    linear-gradient(rgba(0,20,10,.74),rgba(0,7,4,.92)),
+    url('turf-master-v55.jpg');
+}
+
+/* Main three result cards: exact approved accent logic. */
+.resultCard.resultLucky{
+  border-color:#ffdc35;
+  background:
+    radial-gradient(circle at 50% -12%,rgba(0,203,75,.28),transparent 58%),
+    linear-gradient(160deg,#075128,#01180d 76%);
+  box-shadow:0 10px 24px rgba(0,0,0,.40),0 0 16px rgba(0,190,72,.08);
+}
+.resultCard.resultLucky h3,
+.resultCard.resultLucky .big{color:#fff1a0}
+
+.resultCard.resultBonus{
+  border-color:#26adff;
+  background:
+    radial-gradient(circle at 50% -12%,rgba(38,173,255,.34),transparent 60%),
+    linear-gradient(160deg,#073a78,#061b3f 76%);
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.42),
+    0 0 18px rgba(38,173,255,.14),
+    inset 0 0 22px rgba(56,177,255,.05);
+}
+.resultCard.resultBonus h3{color:#6fd3ff}
+.resultCard.resultBonus .big{color:#b7ebff}
+.resultCard.resultBonus .rule b{color:#66cfff}
+
+.resultCard.resultXXL{
+  border-color:#dc48ff;
+  background:
+    radial-gradient(circle at 50% -12%,rgba(214,54,255,.34),transparent 60%),
+    linear-gradient(160deg,#5a0b72,#23052f 76%);
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.42),
+    0 0 18px rgba(214,54,255,.14),
+    inset 0 0 22px rgba(222,73,255,.05);
+}
+.resultCard.resultXXL h3{color:#f39cff}
+.resultCard.resultXXL .big{color:#ffd4ff}
+.resultCard.resultXXL .rule b{color:#ef9dff}
+
+/* Make view/action styling consistent if result buttons are later added. */
+.resultBonus .resultAction,
+.resultBonus button{
+  background:linear-gradient(#46bdff,#0f8de8 50%,#0562bf);
+  border-color:#8bdcff;
+  color:#fff;
+}
+.resultXXL .resultAction,
+.resultXXL button{
+  background:linear-gradient(#e95cff,#bd20ec 50%,#7b0da1);
+  border-color:#f5a8ff;
+  color:#fff;
+}
+
+/* Keep blue/purple focused only where they belong. */
+.heroFeatures,.fixture,.runPanel,.panel,.coverageItem,.drawer,.modalCard{
+  --accent:var(--l7-gold);
 }

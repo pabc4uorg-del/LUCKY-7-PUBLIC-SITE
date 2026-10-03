@@ -1,6 +1,6 @@
 \
 :root{--gold:#ffd72f;--gold2:#e59d00;--bg:#00140b;--panel:#002216;--line:#c9a52b;--text:#fff;--muted:#d4dfd7}
-*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}body{background:linear-gradient(rgba(0,18,9,.88),rgba(0,9,5,.96)),url('turf-master-v53.jpg') center top/cover fixed no-repeat}a{color:inherit}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}body{background:linear-gradient(rgba(0,18,9,.88),rgba(0,9,5,.96)),url('turf-master-v55.jpg') center top/cover fixed no-repeat}a{color:inherit}
 header{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,rgba(0,34,19,.98),rgba(0,15,8,.98));border-bottom:1px solid var(--gold);box-shadow:0 8px 24px rgba(0,0,0,.36)}.wrap{width:min(1120px,92%);margin:auto}.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:1000;color:var(--gold);font-size:20px;text-transform:uppercase}.brand img{width:44px;height:44px;border-radius:10px}.navlinks{display:flex;gap:18px;align-items:center}.navlinks a{text-decoration:none;text-transform:uppercase;font-weight:800;font-size:13px}.cta,.button{background:linear-gradient(#fff18a,#ffd52e 40%,#e6a000);color:#101000!important;border:1px solid #fff0a2;border-radius:999px;padding:11px 19px;font-weight:1000;text-decoration:none;text-transform:uppercase}.menu{display:none;background:none;border:0;color:#fff;font-size:24px}
 main{min-height:70vh}.heroSmall{padding:70px 0 34px;text-align:center;background:linear-gradient(rgba(0,38,20,.26),rgba(0,18,9,.7));border-bottom:1px solid rgba(255,215,47,.25)}.heroSmall h1{font-size:clamp(38px,7vw,68px);color:var(--gold);margin:0 0 10px;text-transform:uppercase;text-shadow:0 2px #6b4f00}.heroSmall p{color:#fff;font-size:18px;font-weight:700}.section{padding:28px 0 60px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:linear-gradient(155deg,rgba(5,66,34,.96),rgba(0,22,12,.98));border:1px solid var(--gold);border-radius:18px;padding:21px;box-shadow:0 12px 26px rgba(0,0,0,.35),inset 0 1px rgba(255,255,255,.04)}.card h3{color:var(--gold);margin-top:0;text-transform:uppercase;font-size:20px}.price{font-size:36px;color:#fff0a2;font-weight:1000;margin:12px 0}.feature{padding:10px 0;border-bottom:1px solid #24563b}.feature:before{content:'✓ ';color:var(--gold);font-weight:900}.feature.no:before{content:'— ';color:#b7c1ba}.notice{border:1px solid var(--gold);background:#2c2302;padding:13px;border-radius:10px;color:#fff0ae;line-height:1.5;font-weight:700}.content{background:linear-gradient(155deg,rgba(5,57,31,.96),rgba(0,22,12,.98));border:1px solid var(--gold);border-radius:18px;padding:23px;line-height:1.68;box-shadow:0 10px 26px rgba(0,0,0,.34)}.content h2,.content h3{color:var(--gold);text-transform:uppercase}.priceHero{margin-bottom:18px;border:1px solid var(--gold);border-radius:18px;overflow:hidden;background:#00170d}.priceHero img{display:block;width:100%;height:auto;max-height:330px;object-fit:cover;object-position:center 64%}
 footer{border-top:1px solid var(--gold);padding:32px 0 50px;color:#d7e2db;background:rgba(0,15,8,.92)}.footerGrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:25px}.footerGrid h3{text-transform:uppercase;color:var(--gold)}.footerGrid a{display:block;margin:8px 0;text-decoration:none;text-transform:uppercase;font-size:12px}.small{font-size:12px;color:#aebdb3}
@@ -33,7 +33,7 @@ footer{border-top:1px solid var(--gold);padding:32px 0 50px;color:#d7e2db;backgr
 body{
   background:
     linear-gradient(rgba(0,18,9,.76),rgba(0,8,4,.94)),
-    url('turf-master-v53.jpg') center top/cover fixed repeat-y;
+    url('turf-master-v55.jpg') center top/cover fixed repeat-y;
 }
 header{
   background:linear-gradient(180deg,rgba(0,34,18,.99),rgba(0,10,5,.99));
@@ -58,4 +58,358 @@ header{
   max-height:430px;
   object-fit:cover;
   object-position:center;
+}
+
+
+/* ============================================================
+   V5.4 PUBLIC PAGE FULL VISUAL ROLLOUT
+   ============================================================ */
+:root{
+  --v54-gold:#ffd936;
+  --v54-gold2:#e8a200;
+  --v54-green:#069c47;
+  --v54-deep:#00150b;
+  --v54-panel:#032718;
+}
+body{
+  background:
+    linear-gradient(rgba(0,20,10,.72),rgba(0,7,4,.92)),
+    url('turf-master-v55.jpg') center top/cover fixed repeat-y;
+}
+header{
+  min-height:76px;
+  background:linear-gradient(180deg,rgba(0,36,19,.99),rgba(0,11,6,.99));
+  border-bottom:1px solid var(--v54-gold);
+  box-shadow:0 10px 30px rgba(0,0,0,.44);
+}
+.brand{color:var(--v54-gold)}
+.navlinks a:hover{color:#ffe77b}
+
+.heroSmall{
+  min-height:330px;
+  display:grid;
+  place-items:end center;
+  padding:0 0 34px;
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,rgba(0,10,6,.18),rgba(0,16,8,.82)),
+    url('hero-stadium-v55.jpg') center 50%/cover no-repeat;
+  border-bottom:2px solid var(--v54-gold);
+}
+.heroSmall::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0;
+  height:42%;
+  background:
+    linear-gradient(transparent,rgba(0,19,10,.95)),
+    url('turf-master-v55.jpg') center/cover;
+  opacity:.54;
+  pointer-events:none;
+}
+.heroSmall .wrap{position:relative;z-index:2}
+.heroSmall h1{
+  font-size:clamp(48px,9vw,86px);
+  color:var(--v54-gold);
+  text-shadow:0 3px #6f5000,0 0 20px rgba(255,210,30,.18);
+}
+.heroSmall p{
+  color:#fff;
+  font-size:clamp(15px,2vw,20px);
+  text-transform:uppercase;
+  letter-spacing:.4px;
+}
+
+.section{
+  padding:30px 0 64px;
+  background:
+    linear-gradient(rgba(0,27,14,.50),rgba(0,11,6,.75)),
+    url('turf-master-v55.jpg') center/cover repeat-y;
+}
+
+.card,.content,.africaFx,.infoTile,.faq details,.resultsPanel,.resultsTab,.resultsEmpty{
+  border:1.5px solid var(--v54-gold);
+  background:
+    radial-gradient(circle at 18% 0%,rgba(16,135,60,.20),transparent 18rem),
+    linear-gradient(158deg,rgba(3,56,29,.98),rgba(0,17,9,.99));
+  box-shadow:0 14px 28px rgba(0,0,0,.42),inset 0 0 0 1px rgba(255,255,255,.03);
+}
+
+.cards{gap:16px;align-items:stretch}
+.card{
+  position:relative;
+  padding:24px 22px;
+  border-radius:20px;
+  overflow:hidden;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.02),transparent 30%);
+}
+.card h3{
+  color:#fff0a0;
+  font-size:23px;
+  text-align:center;
+}
+.card .price{
+  text-align:center;
+  font-size:44px;
+  color:var(--v54-gold);
+  text-shadow:0 2px #624700;
+}
+.cardStandard{
+  transform:translateY(-6px);
+  border-width:2px;
+  box-shadow:0 18px 34px rgba(0,0,0,.48),0 0 22px rgba(255,208,30,.08);
+}
+.planBadge{
+  display:block;
+  width:max-content;
+  margin:-10px auto 10px;
+  padding:7px 18px;
+  border-radius:999px;
+  background:linear-gradient(#fff5a0,#ffd936 45%,#e9a100);
+  color:#111;
+  font-size:11px;
+  font-weight:1000;
+  text-transform:uppercase;
+}
+.planStatus{
+  margin-top:17px;
+  border:1px solid #ffd936;
+  border-radius:12px;
+  padding:11px 14px;
+  text-align:center;
+  font-weight:1000;
+  color:#fff0a0;
+  background:linear-gradient(180deg,#095c30,#033a1e);
+}
+
+.priceFeatureStrip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin:0 0 22px;
+}
+.priceFeature{
+  min-height:105px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  border:1px solid #ffd936;
+  border-radius:16px;
+  background:linear-gradient(160deg,#07361f,#02170d);
+}
+.priceFeature .circle{
+  width:43px;height:43px;
+  display:grid;place-items:center;
+  border:2px solid #ffd936;
+  border-radius:50%;
+  color:#ffd936;
+  font-size:20px;
+  margin-bottom:7px;
+}
+.priceFeature b{font-size:13px}
+.priceFeature small{color:#d6e4da;margin-top:3px}
+
+.additionalInfo{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:18px;
+}
+.infoTile{
+  min-height:112px;
+  border-radius:15px;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.infoTile b{color:#ffd936;margin-bottom:5px;text-transform:uppercase}
+.infoTile small{color:#e4ece7;line-height:1.45}
+
+.faq{
+  margin-top:18px;
+}
+.faq h2{color:#ffd936;text-transform:uppercase}
+.faq details{
+  border-radius:12px;
+  margin:8px 0;
+  padding:13px 15px;
+}
+.faq summary{
+  cursor:pointer;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.faq p{color:#dce6df;line-height:1.55}
+
+/* Results page shell - no fabricated fixture data */
+.resultsTabs{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:18px 0;
+}
+.resultsTab{
+  border-radius:13px;
+  padding:14px;
+  text-align:center;
+  font-weight:1000;
+  text-transform:uppercase;
+}
+.resultsTab.active{
+  background:linear-gradient(#fff5a1,#ffd936 45%,#e9a100);
+  color:#111;
+}
+.resultsPanel{
+  border-radius:20px;
+  padding:22px;
+}
+.resultsEmpty{
+  border-radius:16px;
+  padding:34px 18px;
+  text-align:center;
+}
+.resultsEmpty h2{
+  color:#ffd936;
+  margin-top:0;
+}
+.resultsEmpty p{
+  max-width:660px;
+  margin:8px auto;
+  color:#d8e5dc;
+  line-height:1.55;
+}
+.resultsAction{
+  display:inline-block;
+  margin-top:15px;
+  padding:12px 20px;
+  border-radius:999px;
+  background:linear-gradient(#fff5a1,#ffd936 45%,#e9a100);
+  color:#111;
+  text-decoration:none;
+  font-weight:1000;
+  text-transform:uppercase;
+}
+
+.priceHero{
+  max-height:none;
+  border-radius:20px;
+  border:1.5px solid var(--v54-gold);
+}
+.priceHero img{
+  width:100%;
+  height:clamp(260px,40vw,430px);
+  max-height:none;
+  object-fit:cover;
+  object-position:center;
+}
+
+footer{
+  background:linear-gradient(180deg,#00170c,#000804);
+  border-top:1px solid #ffd936;
+}
+
+@media(max-width:760px){
+  .heroSmall{min-height:350px;background-position:center center}
+  .cards,.footerGrid,.priceFeatureStrip,.additionalInfo,.resultsTabs{grid-template-columns:1fr}
+  .cardStandard{transform:none}
+  .priceHero img{height:330px}
+  .wrap{width:min(94%,720px)}
+}
+
+
+/* ============================================================
+   V5.5 PRICING STYLE — MATCH APPROVED SECOND SCREENSHOT
+   GREEN FREE / GOLD STANDARD / PURPLE 10-CREDIT PREMIUM
+   ============================================================ */
+
+.cardFree{
+  border-color:#39e77d;
+  background:
+    radial-gradient(circle at 50% -5%,rgba(26,220,103,.20),transparent 60%),
+    linear-gradient(160deg,#073f25,#02180e 78%);
+}
+.cardFree h3{color:#79ffaf}
+.cardFree .price{color:#ffe67c}
+.cardFree .planStatus{
+  border-color:#4df28b;
+  background:linear-gradient(#0b8a46,#06602f);
+  color:#fff;
+}
+
+.cardStandard{
+  border-color:#ffd936;
+  background:
+    radial-gradient(circle at 50% -5%,rgba(255,214,37,.19),transparent 60%),
+    linear-gradient(160deg,#49390a,#171603 78%);
+}
+.cardStandard h3{color:#ffe65e}
+.cardStandard .price{color:#ffd936}
+.cardStandard .planStatus{
+  background:linear-gradient(#fff0a1,#ffd936 48%,#e5a000);
+  color:#111;
+}
+
+.cardPremium{
+  border-color:#df4cff;
+  background:
+    radial-gradient(circle at 50% -5%,rgba(220,64,255,.27),transparent 60%),
+    linear-gradient(160deg,#500868,#23042d 78%);
+  box-shadow:
+    0 16px 30px rgba(0,0,0,.45),
+    0 0 20px rgba(211,62,255,.14),
+    inset 0 0 20px rgba(255,111,255,.04);
+}
+.cardPremium h3{color:#f3a0ff}
+.cardPremium .price{color:#ffe0ff;text-shadow:0 2px #5b0b6f}
+.cardPremium .feature{border-color:rgba(240,151,255,.22)}
+.cardPremium .planStatus{
+  border-color:#ef90ff;
+  background:linear-gradient(#e959ff,#bd22e9 52%,#7f0ea4);
+  color:#fff;
+}
+.premiumBadge{
+  background:linear-gradient(#ffb0ff,#e75aff 48%,#b122d0);
+  color:#25002d;
+  border:1px solid #ffd8ff;
+}
+
+/* Results tabs on the standalone Results page */
+.resultsTab:nth-child(1){
+  border-color:#ffd936;
+}
+.resultsTab:nth-child(2){
+  border-color:#28aefe;
+  background:linear-gradient(160deg,#093b7b,#061d40);
+  color:#8cdbff;
+}
+.resultsTab:nth-child(3){
+  border-color:#dd4dff;
+  background:linear-gradient(160deg,#57096f,#25042f);
+  color:#f2a0ff;
+}
+.resultsTab.active{
+  background:linear-gradient(#fff5a1,#ffd936 45%,#e9a100);
+  color:#111;
+}
+
+/* Shared public background keeps the turf master. */
+body,.section{
+  background-image:
+    linear-gradient(rgba(0,20,10,.72),rgba(0,7,4,.92)),
+    url('turf-master-v55.jpg');
+}
+.heroSmall{
+  background:
+    linear-gradient(180deg,rgba(0,10,6,.18),rgba(0,16,8,.82)),
+    url('hero-stadium-v55.jpg') center 50%/cover no-repeat;
 }
