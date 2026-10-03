@@ -8,9 +8,9 @@
 <meta name="description" content="Lucky 7 football analytics by PABC — The Pan African Boys Club.">
 <link rel="icon" href="assets/brand/icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="assets/master-ui.css?v=5.5">
+<link rel="stylesheet" href="assets/master-ui.css?v=5.6">
 <script defer src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
-<script src="assets/config.js?v=5.5"></script>
+<script src="assets/config.js?v=5.6"></script>
 </head>
 <body>
 <div id="scrim" class="scrim"></div>
@@ -39,7 +39,7 @@
 
 <div class="app">
   <header class="hero">
-    <img class="heroImg" src="assets/hero-stadium-v55.jpg?v=5.5" alt="Lucky 7 Soccer Prediction stadium">
+    <img class="heroImg" src="assets/hero-stadium-v56.jpg?v=5.6" alt="Lucky 7 Soccer Prediction stadium">
     <button id="menuBtn" class="heroTap menuTap" aria-label="Open menu"></button>
     <button id="bellBtn" class="heroTap bellTap" aria-label="Notifications"></button>
     <div id="accountPill" class="accountPill">SIGN IN</div>
@@ -103,10 +103,39 @@
 
       <div class="resultShell">
         <div class="heading"><span class="num">3</span>YOUR RESULTS</div>
-        <div class="resultGrid">
-          <div class="resultCard resultLucky"><h3>LUCKY 7</h3><div class="big">7</div><div class="sub">EXACTLY 7 QUALIFYING FIXTURES</div><div class="rule">CALIBRATED PROBABILITY + <b>DATA QUALITY</b></div></div>
-          <div class="resultCard resultBonus"><h3>BONUS SET</h3><div class="big">5</div><div class="sub">EXACTLY 5 QUALIFYING FIXTURES</div><div class="rule">SAME MODEL + <b>QUALITY GATES</b></div></div>
-          <div class="resultCard resultXXL"><h3>XXL</h3><div class="big">10+</div><div class="sub">MINIMUM 10 QUALIFYING FIXTURES</div><div class="rule">ONLY WHEN <b>ENOUGH FIXTURES QUALIFY</b></div></div>
+        <div class="resultGrid resultGridMaster">
+          <div class="resultCard resultLucky">
+            <h3>LUCKY 7</h3>
+            <div class="sub resultCount">EXACTLY 7 QUALIFYING FIXTURES</div>
+            <div class="resultLines">
+              <div><span class="resultIcon">◎</span><span>CALIBRATED PROBABILITY</span></div>
+              <div><span class="resultIcon">▥</span><span>HIGH DATA QUALITY</span></div>
+              <div><span class="resultIcon">◆</span><span>QUALITY FILTERED</span></div>
+            </div>
+            <button class="resultView resultViewLucky" type="button" data-go="results">VIEW RESULTS →</button>
+          </div>
+
+          <div class="resultCard resultBonus">
+            <h3>BONUS SET</h3>
+            <div class="sub resultCount">EXACTLY 5 QUALIFYING FIXTURES</div>
+            <div class="resultLines">
+              <div><span class="resultIcon">◎</span><span>STRONG ANALYTICAL SET</span></div>
+              <div><span class="resultIcon">▥</span><span>RELIABLE FIXTURES</span></div>
+              <div><span class="resultIcon">◆</span><span>QUALITY FILTERED</span></div>
+            </div>
+            <button class="resultView resultViewBonus" type="button" data-go="results">VIEW RESULTS →</button>
+          </div>
+
+          <div class="resultCard resultXXL">
+            <h3>XXL</h3>
+            <div class="sub resultCount">MINIMUM 10 QUALIFYING FIXTURES</div>
+            <div class="resultLines">
+              <div><span class="resultIcon">◎</span><span>LARGER QUALIFIED SET</span></div>
+              <div><span class="resultIcon">▥</span><span>TOP DATA QUALITY</span></div>
+              <div><span class="resultIcon">◆</span><span>ONLY WHEN ENOUGH QUALIFY</span></div>
+            </div>
+            <button class="resultView resultViewXXL" type="button" data-go="results">VIEW RESULTS →</button>
+          </div>
         </div>
       </div>
       <div class="panel">
@@ -125,10 +154,10 @@
         <div class="heading"><span class="num">3</span>RESULTS</div>
         <div id="resultsSummary" class="status">Run Lucky 7 to populate results after the cloud backend is connected.</div>
         <div id="dynamicResults"></div>
-        <div class="resultGrid" style="margin-top:12px">
-          <div class="resultCard resultLucky"><h3>LUCKY 7</h3><div class="big">7</div><div class="sub">EXACTLY 7 QUALIFYING FIXTURES</div></div>
-          <div class="resultCard resultBonus"><h3>BONUS SET</h3><div class="big">5</div><div class="sub">EXACTLY 5 QUALIFYING FIXTURES</div></div>
-          <div class="resultCard resultXXL"><h3>XXL</h3><div class="big">10+</div><div class="sub">MINIMUM 10 QUALIFYING FIXTURES</div></div>
+        <div class="resultGrid resultGridMaster" style="margin-top:12px">
+          <div class="resultCard resultLucky"><h3>LUCKY 7</h3><div class="sub resultCount">EXACTLY 7 QUALIFYING FIXTURES</div><div class="resultLines"><div><span class="resultIcon">◎</span><span>CALIBRATED PROBABILITY</span></div><div><span class="resultIcon">◆</span><span>QUALITY FILTERED</span></div></div></div>
+          <div class="resultCard resultBonus"><h3>BONUS SET</h3><div class="sub resultCount">EXACTLY 5 QUALIFYING FIXTURES</div><div class="resultLines"><div><span class="resultIcon">◎</span><span>STRONG ANALYTICAL SET</span></div><div><span class="resultIcon">◆</span><span>RELIABLE FIXTURES</span></div></div></div>
+          <div class="resultCard resultXXL"><h3>XXL</h3><div class="sub resultCount">MINIMUM 10 QUALIFYING FIXTURES</div><div class="resultLines"><div><span class="resultIcon">◎</span><span>LARGER QUALIFIED SET</span></div><div><span class="resultIcon">◆</span><span>TOP DATA QUALITY</span></div></div></div>
         </div>
       </div>
     </section>
@@ -166,7 +195,7 @@
     <section id="settings" class="page">
       <div class="panel">
         <div class="heading">⚙ SETTINGS</div>
-        <div class="metric"><span>Public UI</span><b>MASTER LOCK V5.5 SCREENSHOT STYLE</b></div>
+        <div class="metric"><span>Public UI</span><b>MASTER LOCK V5.6 AGREED RESULTS</b></div>
         <div class="metric"><span>Fixture limit</span><b>300</b></div>
         <div class="metric"><span>Timezone</span><b>Africa/Accra</b></div>
         <div class="metric"><span>Product</span><b>Football analytics</b></div>
@@ -236,5 +265,5 @@
 </div>
 
 <div id="toast" class="toast hidden" role="status"></div>
-<script src="assets/master-ui.js?v=5.5"></script>
+<script src="assets/master-ui.js?v=5.6"></script>
 </body></html>
