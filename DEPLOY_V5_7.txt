@@ -1,0 +1,12 @@
+EXTRACT INTO DOWNLOADS, THEN DOUBLE-CLICK APPLY_GIT_UPDATE_V5_7.bat
+
+GIT BASH:
+cd ~/Downloads/LUCKY7_PUBLIC_SITE_GITHUB_READY_v2
+cp -r ../LUCKY7_GIT_UPDATE_V5_7_TRIM_REFERENCE_MASTER/. .
+rm -f PUBLIC_UI_MASTER_LOCK_V5_6_AGREED_RESULTS.txt
+git add -A
+git commit -m "Apply Lucky 7 approved trim reference v5.7"
+git push
+
+MOBILE:
+https://pabc4uorg-del.github.io/LUCKY-7-PUBLIC-SITE/
