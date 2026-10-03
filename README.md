@@ -18,3 +18,4 @@ Pages included:
 - Contact
 
 Before public deployment, replace the contact email placeholder in `contact.html`.
+# LUCKY-7-PUBLIC-SITE
