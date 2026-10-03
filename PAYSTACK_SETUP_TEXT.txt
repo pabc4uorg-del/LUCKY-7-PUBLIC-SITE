@@ -1,0 +1,31 @@
+LUCKY 7 - PAYSTACK WEBSITE / BUSINESS DESCRIPTION
+
+WEBSITE FIELD
+Use the public HTTPS address you receive after deploying this site.
+Examples of the FORMAT only:
+- https://your-site-name.onrender.com
+- https://your-github-username.github.io/your-repository/
+
+DO NOT enter an example URL until your actual site is live.
+
+SUGGESTED BUSINESS DESCRIPTION
+Lucky 7 Soccer Prediction is a football analytics service. It analyses football fixture information using statistical team-performance data, match context and data-quality checks. Lucky 7 does not operate betting accounts, accept wagers, provide bookmaker services, provide staking instructions or guarantee sporting outcomes.
+
+FRONTEND / PRODUCT BRAND
+Lucky 7 Soccer Prediction
+Created by PABC - The Pan African Boys Club
+
+PAYMENT ACCOUNT
+Use the real personal / business details already supplied to Paystack. The website branding does not change the verified legal payment-account holder.
+
+PRICING SHOWN ON SITE
+Free Daily: GHS 0 - one Lucky 7 analysis per day
+Full Analysis: GHS 2 per successful full analysis
+10 Credits: GHS 10
+
+BEFORE SENDING THE SITE TO PAYSTACK
+1. Replace the support-email placeholder on contact.html with a real email address you control.
+2. Deploy the site.
+3. Open every page on your phone.
+4. Confirm Pricing, Privacy, Terms, Credit Policy, About and Contact all open.
+5. Use the actual HTTPS site address in the Paystack Website field.

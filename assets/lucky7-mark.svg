@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 170" role="img" aria-label="Lucky 7 Soccer Prediction">
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fff2a2"/>
+    <stop offset=".38" stop-color="#e7bb35"/>
+    <stop offset="1" stop-color="#9a6a00"/>
+  </linearGradient>
+</defs>
+<rect width="520" height="170" rx="20" fill="#052d1e"/>
+<text x="28" y="72" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="56" fill="url(#g)">LUCKY</text>
+<text x="338" y="125" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="132" fill="url(#g)">7</text>
+<text x="31" y="112" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="30" fill="#ffe268">SOCCER</text>
+<text x="31" y="143" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="25" fill="#ffe268">PREDICTION</text>
+</svg>

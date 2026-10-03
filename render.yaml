@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: lucky7-soccer-prediction
+    runtime: static
+    buildCommand: echo "Lucky 7 static site ready"
+    staticPublishPath: .
+    autoDeployTrigger: commit
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN

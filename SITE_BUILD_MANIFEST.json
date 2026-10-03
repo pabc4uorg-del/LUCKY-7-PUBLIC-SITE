@@ -1,0 +1,22 @@
+{
+  ".github/workflows/pages.yml": "6cb362f0079829b6009e980cd54fb60ad6bda05fb6eb28f6df61180a1b4b4bec",
+  ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "404.html": "cbb78d0845a6d67abdef7d590bec628a57e991564e8806ed21c5471b66fe6e97",
+  "DEPLOY_SITE_FIRST.txt": "70aa4d570ed51ac98d72984e7ef2b0b1d6a8d177773ba1be984b2167353a7ed6",
+  "PAYSTACK_SETUP_TEXT.txt": "0b34107d3b1457b4c71d250a58f0edd04c08b9fd49fe44dadd99a420560c9100",
+  "README.md": "ea40bb4e6f3eb5dd79d4b1c988ac3079ab39789a135b1ed427d833b4b54753b3",
+  "about.html": "63487cf28eecbce45a7029bdb1bc793fb404aecc6b689321a9242d33ea0d7f56",
+  "assets/coverage.jpg": "df233cb64f1e96a1c6fab0c703bfd5165f26a90d5fd1adcb3fbe14dcc782aac2",
+  "assets/hero.jpg": "dd0878f471eda48bb248f086a5a4074dea41d336f3328c51e2bfaceae78d9db9",
+  "assets/lucky7-mark.svg": "59003592c7bd79ae945ccd8e98011b7491f28a6acc712536bc95f743d386b3b7",
+  "assets/results.jpg": "9ad7482b8232ce1f1b014406711f1332fb02b94b0ba7fd6a9ab69f684b65430e",
+  "assets/site.css": "ba0c50597906d17b98aada5951d488cef30a5abfc0e42b52aa31c1d442512372",
+  "assets/site.js": "66a85777774beb9e2df97d7e0afc668cd9b3c05f0f986ee30fadc5ce1b02cdde",
+  "contact.html": "788898a8423eac0b5f30513af86d7f7217025da91b1b95529e6701c855e7b3ad",
+  "credit-policy.html": "7ad66a20f364b8cdb0002b91cc1780d2adff6df577860770166f5b17bc77ecee",
+  "index.html": "1341f9010f5a7c5166f23a5e2a8d850bab1944bf22053ca75a83f9be5fc3a16b",
+  "pricing.html": "942ccde2677ee074729a069cc69fa064f1d8426bff40d50544879c3b76c216b0",
+  "privacy.html": "bcb6c0472d2f6e666c4745463c3b874a205e52e03eef0f3367cc97e88debfce6",
+  "render.yaml": "0421f529fa779baee59e2740bf55e9db0ba2b281da636c8d0d0264d7ed2f5d1e",
+  "terms.html": "11fb452901b4937cb9ad19aced0082068c89d52e69c7279c72e05e622907a847"
+}
