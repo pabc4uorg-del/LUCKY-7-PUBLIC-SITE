@@ -1,0 +1,20 @@
+LUCKY 7 - GIT UPDATE V5 STADIUM MASTER
+
+1. EXTRACT THIS ZIP.
+2. OPEN GIT BASH.
+3. GO TO THE EXISTING REPOSITORY:
+   cd ~/Downloads/LUCKY7_PUBLIC_SITE_GITHUB_READY_v2
+4. COPY THIS UPDATE OVER THE REPOSITORY:
+   cp -r ../LUCKY7_GIT_UPDATE_V5_STADIUM_MASTER/. .
+5. CHECK:
+   git status
+6. COMMIT AND PUSH:
+   git add -A
+   git commit -m "Apply Lucky 7 stadium master v5"
+   git push
+
+GITHUB PAGES MUST REMAIN:
+DEPLOY FROM A BRANCH -> main -> /(root)
+
+MOBILE LINK AFTER PUSH:
+https://pabc4uorg-del.github.io/LUCKY-7-PUBLIC-SITE/

@@ -49,19 +49,24 @@
     <section id="home" class="page active">
       <div class="fixture">
         <div class="heading"><span class="num">1</span>ADD FIXTURES</div>
-        <div class="fixtureLimitBadge">MAXIMUM 300 FIXTURES PER RUN</div>
-        <textarea id="fixtures" maxlength="1048576" placeholder="Paste or type fixtures here...
-e.g. Team A vs Team B, League, Date, Time
-Kickoff eligibility is checked in Ghana time."></textarea>
+        <div class="fixtureLimitBadge">MAXIMUM 300 FIXTURES PER RUN</div><div class="status" style="margin:0 0 10px;color:#ffe999;font-weight:700">MOBILE-FIRST MASTER UI • GHANA TIME • QUALITY CHECKS ON EVERY RUN</div>
+        <textarea id="fixtures" maxlength="1048576" placeholder="PASTE OR TYPE FIXTURES IN ANY TEXT LAYOUT...\n\nExamples can include team names, leagues, dates and times in ordinary text.\nYou can mix typed text, pasted text, uploaded text files and screenshot text in one fixture pool."></textarea>
 
         <div class="intakeButtons">
           <button id="pasteBtn" class="secondary" type="button">▤ Paste Text</button>
-          <button id="uploadBtn" class="secondary" type="button">⇧ Upload File</button>
+          <button id="uploadBtn" class="secondary" type="button">⇧ UPLOAD TEXT FILES</button>
           <button id="screenshotBtn" class="secondary wideOnPhone" type="button">📷 Screenshot</button>
         </div>
 
-        <input id="fixtureFile" type="file" hidden accept=".txt,.csv,text/plain,text/csv">
+        <input id="fixtureFile" type="file" hidden multiple accept="text/*,.txt,.csv,.tsv,.log,.md">
         <input id="screenshotFile" type="file" hidden accept="image/png,image/jpeg,image/webp,image/*">
+
+        <div id="uploadStatus" class="uploadStatus">
+          <div><b>TEXT INPUT READY</b> • TYPE, PASTE OR UPLOAD</div>
+          <div id="uploadCount">0 / 5 TEXT FILES ADDED</div>
+          <div id="uploadNames" class="uploadNames">TXT • CSV • TSV • LOG • MD • OTHER PLAIN-TEXT FILES</div>
+        </div>
+
 
         <div id="ocrBox" class="ocrBox hidden">
           <div id="ocrStatus" class="status">Screenshot reader ready.</div>
@@ -82,23 +87,42 @@ Kickoff eligibility is checked in Ghana time."></textarea>
         <div id="runStatus" class="status">Public interface ready. Live analysis activates when the secure cloud backend is connected.</div>
       </div>
 
-      <div class="visual"><img src="assets/approved_results.jpg" alt="Lucky 7, Bonus Set and XXL"></div>
-      <div class="visual"><img src="assets/approved_coverage.jpg" alt="Analysis Coverage"></div>
+      <div class="resultShell">
+        <div class="heading"><span class="num">3</span>YOUR RESULTS</div>
+        <div class="resultGrid">
+          <div class="resultCard"><h3>LUCKY 7</h3><div class="big">7</div><div class="sub">EXACTLY 7 QUALIFYING FIXTURES</div><div class="rule">CALIBRATED PROBABILITY + <b>DATA QUALITY</b></div></div>
+          <div class="resultCard"><h3>BONUS SET</h3><div class="big">5</div><div class="sub">EXACTLY 5 QUALIFYING FIXTURES</div><div class="rule">SAME MODEL + <b>QUALITY GATES</b></div></div>
+          <div class="resultCard"><h3>XXL</h3><div class="big">10+</div><div class="sub">MINIMUM 10 QUALIFYING FIXTURES</div><div class="rule">ONLY WHEN <b>ENOUGH FIXTURES QUALIFY</b></div></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="heading">ANALYSIS COVERAGE</div>
+        <div class="coverageGrid">
+          <div class="coverageItem"><b>COMPETITIONS</b><span>FULL / GOOD TIERS</span></div>
+          <div class="coverageItem"><b>TEAM FORM</b><span>LAST 10 MATCHES</span></div>
+          <div class="coverageItem"><b>SQUAD CONTEXT</b><span>ONLY WHEN RELIABLE</span></div>
+          <div class="coverageItem"><b>GHANA TIME</b><span>KICK-OFF FILTERS</span></div>
+        </div>
+      </div>
     </section>
 
     <section id="results" class="page">
       <div class="panel">
-        <div class="heading"><span class="num">2</span>RESULTS</div>
+        <div class="heading"><span class="num">3</span>RESULTS</div>
         <div id="resultsSummary" class="status">Run Lucky 7 to populate results after the cloud backend is connected.</div>
         <div id="dynamicResults"></div>
-        <div class="visual compact"><img src="assets/approved_results.jpg" alt="Lucky 7 output format"></div>
+        <div class="resultGrid" style="margin-top:12px">
+          <div class="resultCard"><h3>LUCKY 7</h3><div class="big">7</div><div class="sub">EXACTLY 7 QUALIFYING FIXTURES</div></div>
+          <div class="resultCard"><h3>BONUS SET</h3><div class="big">5</div><div class="sub">EXACTLY 5 QUALIFYING FIXTURES</div></div>
+          <div class="resultCard"><h3>XXL</h3><div class="big">10+</div><div class="sub">MINIMUM 10 QUALIFYING FIXTURES</div></div>
+        </div>
       </div>
     </section>
 
     <section id="account" class="page">
       <div class="panel">
         <div class="heading">👤 ACCOUNT</div>
-        <div id="signedOut">
+        <div id="backendNotice" class="backendNotice hidden">SIGN-IN NEEDS THE SECURE CLOUD BACKEND. THE PUBLIC GITHUB PAGES SITE IS STATIC, SO REAL ACCOUNTS WILL ACTIVATE AFTER THE FASTAPI BACKEND IS DEPLOYED.</div><div id="signedOut">
           <input id="displayName" placeholder="Name (optional)">
           <input id="email" type="email" placeholder="Email">
           <input id="password" type="password" placeholder="Password (8+ characters)">
@@ -128,7 +152,7 @@ Kickoff eligibility is checked in Ghana time."></textarea>
     <section id="settings" class="page">
       <div class="panel">
         <div class="heading">⚙ SETTINGS</div>
-        <div class="metric"><span>Public UI</span><b>MASTER LOCK v3</b></div>
+        <div class="metric"><span>Public UI</span><b>MASTER LOCK V5 STADIUM</b></div>
         <div class="metric"><span>Fixture limit</span><b>300</b></div>
         <div class="metric"><span>Timezone</span><b>Africa/Accra</b></div>
         <div class="metric"><span>Product</span><b>Football analytics</b></div>

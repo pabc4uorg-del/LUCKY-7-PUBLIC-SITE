@@ -6,9 +6,151 @@ function openDrawer(){$("drawer").classList.add("open");$("scrim").classList.add
 function token(){return localStorage.getItem("lucky7_token")||""}function headers(json=true){const h={};if(json)h["Content-Type"]="application/json";if(token())h["Authorization"]="Bearer "+token();return h}
 async function api(path,o={}){if(!API_BASE)throw Error("CLOUD_BACKEND_NOT_CONNECTED");const r=await fetch(API_BASE+path,{...o,headers:{...headers(o.body!==undefined),...(o.headers||{})}});let d={};try{d=await r.json()}catch{}if(!r.ok)throw Error(d.detail||d.message||("Request failed: "+r.status));return d}
 const backendMessage=()=> "The Lucky 7 public interface is live, but the secure analytics backend has not been connected to this website yet.";
-async function pasteText(){try{const t=await navigator.clipboard.readText();if(t){$("fixtures").value=t;toast("Fixture text pasted.")}else toast("Clipboard is empty.")}catch{toast("Clipboard permission blocked. Paste directly into the fixture box.")}}
-function loadTextFile(f){if(!f)return;if(f.size>1048576){toast("Maximum text upload is 1 MB.");return}const r=new FileReader();r.onload=()=>{$("fixtures").value=String(r.result||"");toast("Fixture file loaded.")};r.readAsText(f)}
-async function readScreenshot(f){if(!f)return;if(f.size>8388608){toast("Maximum screenshot size is 8 MB.");return}const p=$("ocrPreview"),s=$("ocrStatus");$("ocrBox").classList.remove("hidden");p.classList.remove("hidden");p.src=URL.createObjectURL(f);s.textContent="Reading screenshot…";if(!window.Tesseract){s.textContent="Screenshot reader could not load.";return}try{const out=await Tesseract.recognize(f,"eng",{logger:m=>{if(m.status==="recognizing text")s.textContent=`Reading screenshot… ${Math.round((m.progress||0)*100)}%`}});const t=(out.data?.text||"").trim();if(t){$("fixtures").value=t;s.textContent="Screenshot text extracted. Please check it before running.";toast("Screenshot text ready for review.")}else s.textContent="No readable fixture text was found."}catch{s.textContent="Screenshot reading failed. Use paste or text upload instead."}}
+const MAX_FIXTURE_FILES=5;
+const MAX_TEXT_FILE_BYTES=1024*1024;
+const MAX_COMBINED_TEXT_CHARS=1048576;
+let uploadedFixtureFiles=[];
+
+function appendFixtureText(text,sourceLabel="TEXT"){
+  const incoming=String(text||"").replace(/\r\n?/g,"\n").trim();
+  if(!incoming)return false;
+  const box=$("fixtures");
+  const current=String(box.value||"").trim();
+  const combined=current ? current+"\n\n"+incoming : incoming;
+  if(combined.length>MAX_COMBINED_TEXT_CHARS){
+    toast("Combined fixture text is too large. Maximum is 1 MB.",3600);
+    return false;
+  }
+  box.value=combined;
+  box.dispatchEvent(new Event("input",{bubbles:true}));
+  return true;
+}
+
+function updateUploadStatus(){
+  const count=uploadedFixtureFiles.length;
+  const countEl=$("uploadCount"),namesEl=$("uploadNames"),status=$("uploadStatus");
+  if(countEl)countEl.textContent=`${count} / ${MAX_FIXTURE_FILES} TEXT FILES ADDED`;
+  if(namesEl){
+    namesEl.textContent=count
+      ? uploadedFixtureFiles.map(x=>x.name).join(" • ")
+      : "TXT • CSV • TSV • LOG • MD • OTHER PLAIN-TEXT FILES";
+  }
+  if(status)status.classList.toggle("limit",count>=MAX_FIXTURE_FILES);
+}
+
+function isTextLikeFile(file){
+  const name=(file?.name||"").toLowerCase();
+  const ext=name.includes(".") ? name.split(".").pop() : "";
+  const allowedExt=new Set(["txt","csv","tsv","log","md","text","lst","dat"]);
+  return Boolean(file && (
+    (file.type||"").toLowerCase().startsWith("text/") ||
+    allowedExt.has(ext) ||
+    !file.type
+  ));
+}
+
+async function pasteText(){
+  try{
+    const t=await navigator.clipboard.readText();
+    if(!t){toast("Clipboard is empty.");return}
+    if(appendFixtureText(t,"PASTE"))toast("Fixture text added to the current input.");
+  }catch{
+    toast("Clipboard permission blocked. You can paste directly into the fixture box.");
+  }
+}
+
+function readFileAsText(file){
+  return new Promise((resolve,reject)=>{
+    const r=new FileReader();
+    r.onload=()=>resolve(String(r.result||""));
+    r.onerror=()=>reject(new Error("Could not read "+(file.name||"file")));
+    r.readAsText(file);
+  });
+}
+
+async function loadTextFiles(fileList){
+  const chosen=Array.from(fileList||[]);
+  if(!chosen.length)return;
+
+  const remaining=MAX_FIXTURE_FILES-uploadedFixtureFiles.length;
+  if(remaining<=0){
+    toast("Maximum 5 fixture text files per input.",3400);
+    updateUploadStatus();
+    return;
+  }
+
+  const accepted=chosen.slice(0,remaining);
+  if(chosen.length>remaining){
+    toast(`Only ${remaining} more text file${remaining===1?"":"s"} can be added. Maximum is 5.`,3800);
+  }
+
+  let added=0;
+  for(const file of accepted){
+    if(!isTextLikeFile(file)){
+      toast(`${file.name}: text files only.`,3200);
+      continue;
+    }
+    if(file.size>MAX_TEXT_FILE_BYTES){
+      toast(`${file.name}: maximum 1 MB per text file.`,3400);
+      continue;
+    }
+
+    const sig=`${file.name}|${file.size}|${file.lastModified}`;
+    if(uploadedFixtureFiles.some(x=>x.sig===sig)){
+      toast(`${file.name}: already added.`,2800);
+      continue;
+    }
+
+    try{
+      const text=await readFileAsText(file);
+      if(!text.trim()){
+        toast(`${file.name}: file is empty.`,2800);
+        continue;
+      }
+      if(!appendFixtureText(text,file.name))break;
+      uploadedFixtureFiles.push({name:file.name,sig});
+      added++;
+      updateUploadStatus();
+    }catch(err){
+      toast(err.message||`Could not read ${file.name}.`,3200);
+    }
+  }
+
+  if(added){
+    toast(`${added} text file${added===1?"":"s"} added. ${uploadedFixtureFiles.length} / 5 used.`,3200);
+  }
+  const input=$("fixtureFile");
+  if(input)input.value="";
+}
+
+async function readScreenshot(f){
+  if(!f)return;
+  if(f.size>8388608){toast("Maximum screenshot size is 8 MB.");return}
+  const p=$("ocrPreview"),s=$("ocrStatus");
+  $("ocrBox").classList.remove("hidden");
+  p.classList.remove("hidden");
+  p.src=URL.createObjectURL(f);
+  s.textContent="Reading screenshot…";
+  if(!window.Tesseract){s.textContent="Screenshot reader could not load.";return}
+  try{
+    const out=await Tesseract.recognize(f,"eng",{logger:m=>{
+      if(m.status==="recognizing text")s.textContent=`Reading screenshot… ${Math.round((m.progress||0)*100)}%`
+    }});
+    const t=(out.data?.text||"").trim();
+    if(t){
+      if(appendFixtureText(t,"SCREENSHOT")){
+        s.textContent="Screenshot text added. Please check it before running.";
+        toast("Screenshot text added to the fixture pool.");
+      }else{
+        s.textContent="Screenshot text was read, but the combined input limit was reached.";
+      }
+    }else{
+      s.textContent="No readable fixture text was found.";
+    }
+  }catch{
+    s.textContent="Screenshot reading failed. Use paste or text upload instead.";
+  }
+}
 function chooseTier(t){activeTier=t;$("freeTierBtn").classList.toggle("selectedTier",t==="FREE");$("fullTierBtn").classList.toggle("selectedTier",t==="FULL")}
 function showLoader(){cancelRequested=false;$("analysisLoader").classList.remove("hidden");updateLoader({stage:"Reading fixtures",processed:0,total:0,teams_checked:0,sources_ok:0,elapsed_seconds:0})}function hideLoader(){$("analysisLoader").classList.add("hidden")}
 function updateLoader(j){const total=Math.max(1,+j.total||0),processed=+j.processed||0,pct=j.status==="COMPLETE"?100:Math.min(96,Math.max(4,processed/total*100));$("loaderProgress").style.width=pct+"%";$("loaderStage").textContent=j.stage||j.status||"Working";$("loaderFixtures").textContent=`Fixtures processed: ${processed} / ${+j.total||0}`;$("loaderTeams").textContent=`Teams checked: ${+j.teams_checked||0}`;$("loaderSources").textContent=`Sources responding: ${+j.sources_ok||0}`;$("loaderElapsed").textContent=`Elapsed: ${Math.round(+j.elapsed_seconds||0)} sec`}
@@ -20,5 +162,12 @@ async function register(){if(!API_BASE){$("accountStatus").textContent=backendMe
 async function login(){if(!API_BASE){$("accountStatus").textContent=backendMessage();return}try{const d=await api("/account/login",{method:"POST",body:JSON.stringify({email:$("email").value,password:$("password").value})});localStorage.setItem("lucky7_token",d.token);await refreshAccount();toast("Signed in.")}catch(e){$("accountStatus").textContent=e.message}}
 async function refreshAccount(){const t=token();$("accountPill").textContent=t?"ACCOUNT":"SIGN IN";$("signedOut").classList.toggle("hidden",!!t);$("signedIn").classList.toggle("hidden",!t);if(!t||!API_BASE)return;try{const d=await api("/account/me",{method:"GET"});$("accountEmail").textContent=d.account?.email||"Signed in";$("creditBalance").textContent=d.credit_balance??0}catch{localStorage.removeItem("lucky7_token");$("accountPill").textContent="SIGN IN";$("signedOut").classList.remove("hidden");$("signedIn").classList.add("hidden")}}
 async function logout(){if(API_BASE&&token()){try{await api("/account/logout",{method:"POST"})}catch{}}localStorage.removeItem("lucky7_token");refreshAccount();toast("Signed out.")}
-function bind(){$("menuBtn").onclick=openDrawer;$("closeDrawer").onclick=closeDrawer;$("scrim").onclick=closeDrawer;$("bellBtn").onclick=()=>toast("No new notifications.");$("accountPill").onclick=()=>setPage("account");document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>setPage(b.dataset.go));$("drawerAdd").onclick=()=>{setPage("home");setTimeout(()=>$("fixtures").focus(),250)};$("pasteBtn").onclick=pasteText;$("uploadBtn").onclick=()=>$("fixtureFile").click();$("screenshotBtn").onclick=()=>$("screenshotFile").click();$("fixtureFile").onchange=e=>loadTextFile(e.target.files[0]);$("screenshotFile").onchange=e=>readScreenshot(e.target.files[0]);$("freeTierBtn").onclick=()=>chooseTier("FREE");$("fullTierBtn").onclick=()=>chooseTier("FULL");$("runBtn").onclick=runAnalysis;$("cancelAnalysisBtn").onclick=cancelRun;$("registerBtn").onclick=register;$("loginBtn").onclick=login;$("logoutBtn").onclick=logout;$("pipelineBtn").onclick=()=>{$("pipelineStatus").textContent=API_BASE?"Cloud backend configured. Full diagnostics remain private/admin-only.":"Public frontend: online. Analytics backend: not yet connected."};$("backendState").textContent=API_BASE?"CONNECTED":"NOT CONNECTED";if(API_BASE)$("runStatus").textContent="Backend configured. Sign in before running analysis.";refreshAccount()}
-document.addEventListener("DOMContentLoaded",bind);
+function setOfflineAccountState(){
+  if(API_BASE)return;
+  $("backendNotice")?.classList.remove("hidden");
+  ["displayName","email","password","registerBtn","loginBtn"].forEach(id=>{const el=$(id);if(el)el.disabled=true;});
+  if($("accountStatus"))$("accountStatus").textContent="REAL SIGN-IN WILL ACTIVATE AFTER THE SECURE FASTAPI BACKEND IS DEPLOYED.";
+  if($("accountPill"))$("accountPill").textContent="ACCOUNT";
+}
+function bind(){$("menuBtn").onclick=openDrawer;$("closeDrawer").onclick=closeDrawer;$("scrim").onclick=closeDrawer;$("bellBtn").onclick=()=>toast("No new notifications.");$("accountPill").onclick=()=>setPage("account");document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>setPage(b.dataset.go));$("drawerAdd").onclick=()=>{setPage("home");setTimeout(()=>$("fixtures").focus(),250)};$("pasteBtn").onclick=pasteText;$("uploadBtn").onclick=()=>$("fixtureFile").click();$("screenshotBtn").onclick=()=>$("screenshotFile").click();$("fixtureFile").onchange=e=>loadTextFiles(e.target.files);$("screenshotFile").onchange=e=>readScreenshot(e.target.files[0]);$("freeTierBtn").onclick=()=>chooseTier("FREE");$("fullTierBtn").onclick=()=>chooseTier("FULL");$("runBtn").onclick=runAnalysis;$("cancelAnalysisBtn").onclick=cancelRun;$("registerBtn").onclick=register;$("loginBtn").onclick=login;$("logoutBtn").onclick=logout;$("pipelineBtn").onclick=()=>{$("pipelineStatus").textContent=API_BASE?"Cloud backend configured. Full diagnostics remain private/admin-only.":"Public frontend: online. Analytics backend: not yet connected."};$("backendState").textContent=API_BASE?"CONNECTED":"NOT CONNECTED";if(API_BASE)$("runStatus").textContent="Backend configured. Sign in before running analysis.";refreshAccount();setOfflineAccountState();updateUploadStatus()}
+document.addEventListener("DOMContentLoaded",()=>{bind();const target=(location.hash||'').replace('#','');if(['home','results','account','reports','settings','help','about'].includes(target))setPage(target);});
